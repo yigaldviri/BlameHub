@@ -1,0 +1,51 @@
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.4.0.RELEASE")
+    }
+}
+
+
+apply plugin: 'java'
+apply plugin: 'spring-boot'
+apply plugin: 'idea'
+
+jar {
+    baseName = 'blamehub'
+}
+
+springBoot {
+    mainClass = "blamehub.Application"
+}
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+dependencies {
+
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+    compile group: 'org.eclipse.jgit', name: 'org.eclipse.jgit', version: '4.3.1.201605051710-r'
+    compile group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.20'
+    compile group: 'javax.inject', name: 'javax.inject', version:'1'
+
+    compile group: 'org.apache.solr', name: 'solr-solrj', version: '6.0.1'
+    compile group: 'org.apache.solr', name: 'solr-core', version: '6.0.1'
+
+    compile 'org.springframework.data:spring-data-solr:2.0.2.RELEASE'
+
+    compile (group: 'org.springframework.boot', name: 'spring-boot-starter', version: '1.4.0.RELEASE'){
+        exclude module : 'spring-boot-starter-logging'
+    }
+
+    compile (group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '1.4.0.RELEASE'){
+        exclude module: "spring-boot-starter-tomcat"
+        exclude module : 'spring-boot-starter-logging'
+    }
+
+}
+
