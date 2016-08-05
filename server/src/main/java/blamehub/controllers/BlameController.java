@@ -4,10 +4,7 @@ import blamehub.services.BlameService;
 import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.response.GroupCommand;
 import org.eclipse.jgit.api.errors.GitAPIException;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
 import java.io.IOException;
@@ -32,6 +29,7 @@ public class BlameController {
         blameService.scanRepo(repoUrl, repoUsername, repoPassword);
     }
 
+    @CrossOrigin
     @RequestMapping(method = RequestMethod.GET, value = SEARCH)
     public List<GroupCommand> search(@RequestParam(value = TERMS, required = true) final String terms) throws IOException, SolrServerException {
         return blameService.search(terms);
