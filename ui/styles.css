@@ -64,11 +64,26 @@ main {
 }
 
 .results-title{
+    font-size: 24px;
+    line-height: 1.35;
+    font-weight: normal;
+    margin-bottom: 10px;
+}
 
+.committer {
+    font-size: 18px;
 }
 
 .commit{
     margin: 15px;
+}
+
+.commit-date {
+    font-size: 16px;
+}
+
+.commit-score {
+    color: #22354c;
 }
 
 .commit-message {

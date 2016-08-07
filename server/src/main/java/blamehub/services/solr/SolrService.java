@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.util.List;
 
 public interface SolrService {
-    void addCommitDoc(CommitDoc commitDoc);
     void addCommitDocs(List<CommitDoc> commitDocs);
     List<GroupCommand> findByTerms(String terms) throws IOException, SolrServerException;
 }

@@ -27,7 +27,7 @@ public class RepoServiceImpl implements RepoService{
 
     @Override
     public Iterator<RevCommit> scanRepo(String url, String repoUsername, String repoPassword) throws GitAPIException, IOException {
-        File repoFolder = getRepoLocationByOs();
+        File repoFolder = getRepoLocationByOS();
         if (!repoFolder.exists()){
             logger.info("No local repository found. Cloning one into " + repoFolder.getAbsolutePath());
             return cloneRepo(url, repoUsername, repoPassword, repoFolder);
@@ -73,7 +73,7 @@ public class RepoServiceImpl implements RepoService{
         return cloneCommand;
     }
 
-    private File getRepoLocationByOs() {
+    private File getRepoLocationByOS() {
         if (System.getProperty("os.name").toLowerCase().contains("windows")){
             return new File("c:/temp/" + BlameConstants.NAME);
         } else {

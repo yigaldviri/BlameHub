@@ -13,7 +13,7 @@ export class CommitResult {
         return new CommitResult(
             json.id,
             json.name_txt_en,
-            new Date(json.date_dt * 1000),
+            new Date(json.date_dt),
             json.message[0],
             json.score);
     }

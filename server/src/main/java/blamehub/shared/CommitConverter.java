@@ -4,6 +4,7 @@ package blamehub.shared;
 import blamehub.shared.model.CommitDoc;
 import org.eclipse.jgit.revwalk.RevCommit;
 
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
@@ -14,7 +15,7 @@ public class CommitConverter {
     public static CommitDoc toCommitDoc(RevCommit revCommit) {
         CommitDoc commitDoc = new CommitDoc();
         commitDoc.setId(revCommit.getName());
-        commitDoc.setDate_dt(new Date(revCommit.getCommitTime()));
+        commitDoc.setDate_dt(Date.from(Instant.ofEpochSecond( revCommit.getCommitTime())));
         commitDoc.setName_txt_en(revCommit.getAuthorIdent().getName());
         commitDoc.setMessage(revCommit.getFullMessage());
         return commitDoc;

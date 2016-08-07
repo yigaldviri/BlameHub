@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.inject.Inject;
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -24,12 +25,6 @@ public class SolrServiceImpl implements SolrService{
 
     @Inject
     private SolrClient solrClient;
-
-
-    @Override
-    public void addCommitDoc(CommitDoc commitDoc) {
-        this.commitDocRepository.save(commitDoc);
-    }
 
     @Override
     public void addCommitDocs(List<CommitDoc> commitDocs) {
@@ -45,6 +40,7 @@ public class SolrServiceImpl implements SolrService{
         solrQuery.set("defType","edismax");
         solrQuery.set("fl","*,score");
         solrQuery.set("bf","recip(ms(NOW/DAY,date_dt),3.16e-11,1,1)");
+        solrQuery.set("fq","date_dt:{NOW/DAY-2YEARS TO NOW/DAY+1DAY}");
         solrQuery.set("group", true);
         solrQuery.set("group.field", "name_txt_en");
         solrQuery.set("group.limit", 3);

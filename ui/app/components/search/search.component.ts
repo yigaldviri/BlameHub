@@ -1,13 +1,15 @@
 'use strict';
 import { Component }     from '@angular/core';
 import { NgForm }    from '@angular/forms';
+import { MDL } from "../../MDL/MDL";
 import { ApiService } from "../../services/apiService";
 import { GroupsResult } from "../../commons/model/GroupsResult";
 
 @Component({
     selector: 'blamehub-search',
     templateUrl: 'app/components/search/search.component.html',
-    providers: [ApiService]
+    providers: [ApiService],
+    directives: [ MDL ]
 })
 
 export class SearchComponent {
@@ -31,11 +33,19 @@ export class SearchComponent {
                     var json = JSON.parse(data._body);
                     this.groupsResult = GroupsResult.fromJson(json[0]);
                 },
-                err => console.log(err),
+                (err: any) => {
+                    this.inSearch = false;
+                    console.log(err);
+                },
                 () => {
                     this.inSearch = false;
                     console.log('Request returned from server')
                 }
             );
     }
+
+    getCommitDate(date: Date): string {
+        return date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
+    }
+
 }
