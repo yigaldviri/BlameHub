@@ -11,6 +11,7 @@ import org.eclipse.jgit.lib.ObjectId;
 import org.eclipse.jgit.lib.Repository;
 import org.eclipse.jgit.revwalk.RevCommit;
 import org.eclipse.jgit.revwalk.RevWalk;
+import org.eclipse.jgit.transport.CredentialsProvider;
 import org.eclipse.jgit.transport.UsernamePasswordCredentialsProvider;
 import org.springframework.stereotype.Service;
 
@@ -33,13 +34,16 @@ public class RepoServiceImpl implements RepoService{
             return cloneRepo(url, repoUsername, repoPassword, repoFolder);
         } else {
             logger.info("Local repository was found in " + repoFolder.getAbsolutePath() +". Pulling update from Git.");
-            return pullRepo(repoFolder);
+            return pullRepo(repoFolder, repoUsername, repoPassword);
         }
     }
 
-    private Iterator<RevCommit> pullRepo(File repoFolder) throws IOException, GitAPIException {
+    private Iterator<RevCommit> pullRepo(File repoFolder, String repoUsername, String repoPassword) throws IOException, GitAPIException {
         Repository repo = new FileRepository(repoFolder + "/.git");
         Git git = new Git(repo);
+        if(repoUsername != null && repoPassword != null){
+            CredentialsProvider.setDefault(new UsernamePasswordCredentialsProvider(repoUsername, repoPassword));
+        }
         PullResult pullResult = git.pull().call();
         ObjectId[] mergedCommits = pullResult.getMergeResult().getMergedCommits();
         return parseCommits(repo, mergedCommits);
