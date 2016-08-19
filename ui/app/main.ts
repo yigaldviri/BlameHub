@@ -1,12 +1,6 @@
-import { bootstrap }    from '@angular/platform-browser-dynamic';
-import { HTTP_PROVIDERS } from '@angular/http';
-import { disableDeprecatedForms, provideForms } from '@angular/forms';
 
-import { AppComponent } from './app.component';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
-bootstrap(AppComponent,
-    [
-        HTTP_PROVIDERS,
-        provideForms()
-    ]
-);
+import { AppModule } from './app.modules';
+
+platformBrowserDynamic().bootstrapModule(AppModule);
