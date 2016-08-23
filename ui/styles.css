@@ -116,3 +116,22 @@ main {
 .sharon-reason {
     font-size: 20px;
 }
+
+.repo-details {
+
+}
+
+.splitter {
+    display: inline-block;
+    width: 8%;
+}
+
+.repo-input {
+    margin: 20px
+}
+
+.repo-page-desc {
+    text-align: center;
+    font-size: 18px;
+    margin: 10px;
+}

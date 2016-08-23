@@ -1,6 +1,7 @@
 package blamehub.controllers;
 
 import blamehub.services.BlameService;
+import blamehub.shared.model.RepoInfo;
 import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.response.GroupCommand;
 import org.eclipse.jgit.api.errors.GitAPIException;
@@ -12,6 +13,7 @@ import java.util.List;
 
 import static blamehub.shared.BlameConstants.*;
 
+@CrossOrigin
 @RestController()
 public class BlameController {
 
@@ -23,13 +25,10 @@ public class BlameController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = REPO_SCAN)
-    public void repoScan(@RequestParam(value = REPO_URL, required = true) final String repoUrl,
-                           @RequestParam(value = REPO_USER_NAME, required = false) final String repoUsername,
-                           @RequestParam(value = REPO_PASSWORD, required = false) final String repoPassword) throws GitAPIException, IOException {
-        blameService.scanRepo(repoUrl, repoUsername, repoPassword);
+    public void repoScan(@RequestBody RepoInfo repoInfo) throws GitAPIException, IOException {
+        blameService.scanRepo(repoInfo.getRepoUrl(), repoInfo.getRepoUsername(), repoInfo.getRepoPassword());
     }
 
-    @CrossOrigin
     @RequestMapping(method = RequestMethod.GET, value = SEARCH)
     public List<GroupCommand> search(@RequestParam(value = TERMS, required = true) final String terms) throws IOException, SolrServerException {
         return blameService.search(terms);

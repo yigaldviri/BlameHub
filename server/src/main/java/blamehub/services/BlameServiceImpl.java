@@ -35,6 +35,7 @@ public class BlameServiceImpl implements BlameService{
         Iterator<RevCommit> commits = repoService.scanRepo(url, repoUsername, repoPassword);
         List<CommitDoc> commitDocList = CommitConverter.toCommitDocs(commits);
         solrService.addCommitDocs(commitDocList);
+        logger.info("Done scanning repository: " + url);
     }
 
     @Override
