@@ -31,15 +31,15 @@
                     <label class="mdl-textfield__label" for="repoPassword">Password</label>
                 </div>
             </div>
+
+            <div class="mdl-dialog__actions" style="margin-top: 30px">
+                <button (click)="scan()" [disabled]="!scanForm.form.valid || scanning"
+                        class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+                    SCAN
+                </button>
+            </div>
         </form>
 
-    </div>
-
-    <div class="mdl-dialog__actions">
-        <button (click)="scan()" [disabled]="!scanForm.form.valid || scanning"
-                class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
-            SCAN
-        </button>
     </div>
 
     <div mdl *ngIf="scanning" style="padding: 60px;">
