@@ -15,9 +15,9 @@
     '@angular':                   'node_modules/@angular',
     'angular2-in-memory-web-api': 'node_modules/angular2-in-memory-web-api',
     'rxjs':                       'node_modules/rxjs',
-    '@angular/router':            'https://npmcdn.com/@angular/router' + routerVer,
-    '@angular/forms':             'https://npmcdn.com/@angular/forms' + formsVer,
-    '@angular/router-deprecated': 'https://npmcdn.com/@angular/router-deprecated' + routerDeprecatedVer,
+    '@angular/router':            'https://unpkg.com/@angular/router' + routerVer,
+    '@angular/forms':             'https://unpkg.com/@angular/forms' + formsVer,
+    '@angular/router-deprecated': 'https://unpkg.com/@angular/router-deprecated' + routerDeprecatedVer,
 
   };
 
