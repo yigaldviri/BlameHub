@@ -28,14 +28,8 @@ module.exports = {
                 test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
                 loader: 'file?name=app/resources/[name].[hash].[ext]'
             },
-            {
-                test: /\.css$/,
-                loader: ExtractTextPlugin.extract('style', 'css?sourceMap')
-            },
-            {
-                test: /\.css$/,
-                include: helpers.root('app'),
-                loader: 'raw'
+            {   test: /\.css$/,
+                loader: "style-loader!css-loader"
             }
         ]
     },
