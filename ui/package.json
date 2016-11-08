@@ -4,6 +4,7 @@
   "description": "UI project for BlameHub server",
   "scripts": {
     "start": "webpack-dev-server --inline --progress --port 3000",
+    "asProd": "webpack-dev-server  --content-base dist --port 3000",
     "build": "rimraf dist && webpack --config config/webpack.prod.js --progress --profile --bail",
     "postinstall": "typings install"
   },

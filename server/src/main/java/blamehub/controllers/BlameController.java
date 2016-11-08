@@ -29,7 +29,7 @@ public class BlameController {
         blameService.scanRepo(repoInfo.getRepoUrl(), repoInfo.getRepoUsername(), repoInfo.getRepoPassword());
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = SEARCH)
+    @RequestMapping(method = RequestMethod.GET, value = BLAME)
     public List<GroupCommand> search(@RequestParam(value = TERMS, required = true) final String terms) throws IOException, SolrServerException {
         return blameService.search(terms);
     }

@@ -57,6 +57,9 @@ local.properties
 build
 gradle/
 
+#This is a placeholder for the ui dist files.
+server/src/main/resources/static/**
+
 # Locally stored "Eclipse launch configurations"
 *.launch
 
