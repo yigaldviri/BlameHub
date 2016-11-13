@@ -1,0 +1,25 @@
+def PROJECT_PATH = projectDir.getAbsolutePath()
+defaultTasks 'webpack_build'
+
+buildscript {
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath "com.moowork.gradle:gradle-node-plugin:0.13"
+    }
+}
+
+apply plugin: 'com.moowork.node'
+
+task webpack_build(type: NpmTask) {
+    args = ['run', 'build']
+    dependsOn npm_install
+}
+
+task clean << {
+    delete "${PROJECT_PATH}/dist"
+    delete "${PROJECT_PATH}/node_modules"
+}
