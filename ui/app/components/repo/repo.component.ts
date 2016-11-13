@@ -12,8 +12,7 @@ import {RepoInfo} from "../../commons/model/RepoInfo";
         `
         <div mdl class="search-pane">
 
-        <div class="repo-page-desc">So, we're gonna clone you'r repository and then index it into Solr</div>
-
+        <div class="repo-page-desc">So, we're gonna clone your repository and then index it into Solr</div>
         <div class="search-bar">
             <form (ngSubmit)="scan()" #scanForm="ngForm"
                   class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
@@ -55,7 +54,7 @@ import {RepoInfo} from "../../commons/model/RepoInfo";
 
     <div mdl *ngIf="scanning" style="padding: 60px;">
         <div class="loading">Right now we are cloning your repository and then we will index it.</div>
-        <div class="loading">That may take a few minutes...</div>
+        <div class="loading">It may take a few minutes...</div>
         <div class="mdl-progress mdl-js-progress mdl-progress__indeterminate" style="width: inherit;"></div>
     </div>
 </div>
