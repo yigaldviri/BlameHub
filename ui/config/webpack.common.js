@@ -1,7 +1,9 @@
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var helpers = require('./helpers');
+var helpers = require('./helpers')
+var CopyWebpackPlugin = require('copy-webpack-plugin');
+
 
 module.exports = {
     entry: {
@@ -25,7 +27,7 @@ module.exports = {
                 loader: 'html'
             },
             {
-                test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
+                test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot)$/,
                 loader: 'file?name=app/resources/[name].[hash].[ext]'
             },
             {   test: /\.css$/,
@@ -41,6 +43,9 @@ module.exports = {
 
         new HtmlWebpackPlugin({
             template: './index.html'
-        })
+        }),
+        new CopyWebpackPlugin([
+            { from: 'favicon.ico'}
+        ])
     ]
 };

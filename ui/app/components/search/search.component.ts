@@ -30,7 +30,7 @@ import { GroupsResult } from "../../commons/model/GroupsResult";
 
 <ul *ngIf="groupsResult && groupsResult.values.length > 0" class="results">
 
-    <div class="results-title">Ok, you wan'a nail one of them:</div>
+    <div class="results-title">Ok, you wanna nail one of them:</div>
     <li *ngFor="let group of groupsResult.values" >
         <div class="committer">{{group.commitResult[0].name}}</div>
         <div class="commit" *ngFor="let commit of group.commitResult" >
