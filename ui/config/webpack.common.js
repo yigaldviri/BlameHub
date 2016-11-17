@@ -45,7 +45,7 @@ module.exports = {
             template: './index.html'
         }),
         new CopyWebpackPlugin([
-            { from: 'favicon.ico'}
+            { from: 'shark.ico'}
         ])
     ]
 };
