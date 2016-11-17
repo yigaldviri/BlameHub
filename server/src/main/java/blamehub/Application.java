@@ -45,7 +45,7 @@ public class Application extends SpringBootServletInitializer {
 
     private String figureSolrServer() {
         // when using Docker we get the Solr container dynamically and not from properties file
-        String solrServer = System.getProperty("solr.url");
+        String solrServer = environment.getProperty("solr.docker");
         if(StringUtils.isEmpty(solrServer)){
             solrServer = environment.getRequiredProperty("solr.url");
         }

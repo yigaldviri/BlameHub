@@ -53,7 +53,8 @@
     "typings": "^1.0.4",
     "webpack": "^1.13.0",
     "webpack-dev-server": "1.14.0",
-    "webpack-merge": "^0.14.0"
+    "webpack-merge": "^0.14.0",
+    "copy-webpack-plugin": "4.0.1"
   },
   "repository": {}
 }
