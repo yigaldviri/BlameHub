@@ -8,23 +8,21 @@
 <br/>
 
 ###Background
-We are a small team of developers working for CA technologies.
-Every time there's a bug or something like that everyone is trying to nail the job to anyone but themselves.
- We have decided to finish that behaviour.
-**BlameHub** scans your Git repository and indexing your commit messages in Solr.
- After that, just search for your bug and get your man tfor the job.
+We are a small team of developers working at CA technologies.  
+Every time there's a bug or something like that everyone tries to nail the job on anyone but themselves. When we can’t reach an agreement we simply throw it on Sharon.  
+We have decided to take it to another level.  
+**BlameHub** scans your Git repository and indexes your commit messages in Solr. Search for your bug to find the scapegoat. Or… just pin it on Sharon.
 
-The project is divided to 2 parts.  
-###Server 
-The server is a Gradle project that generates a JAR and run it using Spring Boot.  
+**BlameHub** is a Gradle project that generates a JAR and run it using Spring Boot.  
 In the project-root-directory run:  
 
-    project-root-directory> gradle build
+    project-root-directory> gradle
   
   Then run the jar:  
 
     project-root-directory/server/build> java -jar blamehub.jar
    
+**Note** that you need to have a solr server up and running. unless you are using docker...    
    
-###Client
+###Using Docker
 TBD  
