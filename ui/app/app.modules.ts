@@ -3,6 +3,7 @@ import { AppComponent }       from './app.component';
 import { HTTP_PROVIDERS } from '@angular/http';
 import { disableDeprecatedForms, provideForms } from '@angular/forms';
 import {SearchComponent} from "./components/search/search.component";
+import {NavbarComponent} from "./components/navbar/navbar.component";
 import { NgModule }       from '@angular/core';
 import { BrowserModule }  from '@angular/platform-browser';
 import { FormsModule }    from '@angular/forms';
@@ -15,6 +16,7 @@ import { FormsModule }    from '@angular/forms';
     ],
     declarations: [
         AppComponent,
+        NavbarComponent,
         SearchComponent,
     ],
     providers: [

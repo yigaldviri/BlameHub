@@ -8,6 +8,7 @@ import {SearchComponent} from "./components/search/search.component";
     template:
         `
         <div mdl>
+        <bh-navbar></bh-navbar>
             <header>
                 <h1>BlameHub</h1>
                 <p>
