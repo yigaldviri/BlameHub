@@ -55,6 +55,7 @@ local.properties
 .externalToolBuilders/
 .idea/
 build
+classes/
 gradle/
 
 #This is a placeholder for the ui dist files.
