@@ -5,7 +5,7 @@ public interface BlameConstants {
     String NAME = "blamehub";
     String BLAME = "/blame";
     String REPO_SCAN = "/repo-scan";
-    String REPO = "/repo";
+    String REPO_CHECK = "/repo-check";
     String TERMS = "terms";
 
     String REPO_URL = "repo_url";

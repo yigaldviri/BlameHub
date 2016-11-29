@@ -34,7 +34,7 @@ public class BlameController {
         return blameService.search(terms);
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = REPO)
+    @RequestMapping(method = RequestMethod.GET, value = REPO_CHECK)
     public String getRepoURL() {
         return blameService.getRepoUrl();
     }

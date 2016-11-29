@@ -24,8 +24,8 @@ export class ApiService {
         let body = JSON.stringify(repoInfo);
         return this.http.post(this.BASE_URL + 'repo-scan', body, this.options);
     }
-  
+
     getRepoUrl(): Observable<Response> {
-      return this.http.get(this.BASE_URL + 'repo');
+      return this.http.get(this.BASE_URL + 'repo-check');
     }
 }
