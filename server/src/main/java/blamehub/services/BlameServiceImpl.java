@@ -44,4 +44,9 @@ public class BlameServiceImpl implements BlameService{
         return solrService.findByTerms(terms);
     }
 
+    @Override
+    public String getRepoUrl() {
+        return repoService.getRepoUrl();
+    }
+
 }

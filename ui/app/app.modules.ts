@@ -1,7 +1,6 @@
 import { routing, appRoutingProviders } from './app.routing';
 import { AppComponent }       from './app.component';
 import { HTTP_PROVIDERS } from '@angular/http';
-import { disableDeprecatedForms, provideForms } from '@angular/forms';
 import {SearchComponent} from "./components/search/search.component";
 import {NavbarComponent} from "./components/navbar/navbar.component";
 import { NgModule }       from '@angular/core';

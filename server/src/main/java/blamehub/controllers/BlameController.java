@@ -33,4 +33,10 @@ public class BlameController {
     public List<GroupCommand> search(@RequestParam(value = TERMS, required = true) final String terms) throws IOException, SolrServerException {
         return blameService.search(terms);
     }
+
+    @RequestMapping(method = RequestMethod.GET, value = REPO)
+    public String getRepoURL() {
+        return blameService.getRepoUrl();
+    }
+
 }

@@ -2,6 +2,9 @@ import { Component, } from '@angular/core';
 import { ROUTER_DIRECTIVES } from '@angular/router';
 import {MDL} from "./MDL/MDL";
 import {SearchComponent} from "./components/search/search.component";
+import {ApiService} from "./services/apiService";
+import {Router} from "@angular/router";
+import {Constants} from "./commons/constants";
 
 @Component({
     selector: 'my-app',
@@ -22,6 +25,21 @@ import {SearchComponent} from "./components/search/search.component";
         </main>
     </div>
 `,
+    providers: [ApiService],
     directives: [ MDL, ROUTER_DIRECTIVES, SearchComponent ]
 })
-export class AppComponent { }
+export class AppComponent {
+  
+  constructor(private apiService: ApiService, private router: Router) {
+      apiService.getRepoUrl().subscribe(
+        (repoUrl: any): void => {
+            if (!repoUrl._body) {
+              this.router.navigateByUrl(Constants.REPO);
+            }
+        },
+        (err: any) => {
+          console.log(err);
+        }
+      );
+  }
+}

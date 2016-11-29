@@ -13,4 +13,7 @@ public interface BlameService {
     void scanRepo(String url, String repoUsername, String repoPassword) throws GitAPIException, IOException;
 
     List<GroupCommand> search(String terms) throws IOException, SolrServerException;
+
+    String getRepoUrl();
+
 }

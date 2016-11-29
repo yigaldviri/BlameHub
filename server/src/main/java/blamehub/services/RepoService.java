@@ -8,4 +8,6 @@ import java.util.Iterator;
 
 public interface RepoService {
     Iterator<RevCommit> scanRepo(String url, String repoUsername, String repoPassword) throws GitAPIException, IOException;
+
+    String getRepoUrl();
 }

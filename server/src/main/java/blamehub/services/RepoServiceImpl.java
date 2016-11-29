@@ -25,6 +25,7 @@ import java.util.List;
 public class RepoServiceImpl implements RepoService{
 
     private static final Logger logger = Logger.getLogger(RepoService.class);
+    private static String REPO_URL;
 
     @Override
     public Iterator<RevCommit> scanRepo(String url, String repoUsername, String repoPassword) throws GitAPIException, IOException {
@@ -36,6 +37,11 @@ public class RepoServiceImpl implements RepoService{
             logger.info("Local repository was found in " + repoFolder.getAbsolutePath() +". Pulling update from Git.");
             return pullRepo(repoFolder, repoUsername, repoPassword);
         }
+    }
+
+    @Override
+    public String getRepoUrl() {
+        return REPO_URL;
     }
 
     private Iterator<RevCommit> pullRepo(File repoFolder, String repoUsername, String repoPassword) throws IOException, GitAPIException {
@@ -59,6 +65,7 @@ public class RepoServiceImpl implements RepoService{
     }
 
     private Iterator<RevCommit> cloneRepo(String url, String repoUsername, String repoPassword, File repoFolder) throws GitAPIException {
+        REPO_URL = url;
         repoFolder.mkdirs();
         CloneCommand cloneCommand = generateCloneCommand(url, repoUsername, repoPassword, repoFolder);
         Git cloned = cloneCommand.call();
@@ -78,10 +85,7 @@ public class RepoServiceImpl implements RepoService{
     }
 
     private File getRepoLocationByOS() {
-        if (System.getProperty("os.name").toLowerCase().contains("windows")){
-            return new File("c:/temp/" + BlameConstants.NAME);
-        } else {
-            return new File("/tmp/" + BlameConstants.NAME);
-        }
+        String tmpFolder = System.getProperty("java.io.tmpdir");
+        return new File(tmpFolder + "/" + BlameConstants.NAME);
     }
 }
