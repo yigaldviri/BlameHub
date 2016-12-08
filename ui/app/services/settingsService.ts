@@ -14,7 +14,7 @@ export class SettingsService {
     constructor(private apiService: ApiService) {}
 
     getRepoUrl(): Observable<string> {
-        if(this.REPO_URL) {
+        if(this.REPO_URL && this.REPO_URL != "null") {
             return Observable.of(this.REPO_URL);
         } else {
             return this.apiService.getRepoUrl()

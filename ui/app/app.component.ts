@@ -31,12 +31,12 @@ import {NavbarComponent} from "./components/navbar/navbar.component";
     directives: [ MDL, ROUTER_DIRECTIVES, NavbarComponent ]
 })
 export class AppComponent {
-  
+
   constructor(private settingsService: SettingsService,
               private router: Router) {
       settingsService.getRepoUrl().subscribe(
         (repoUrl: string): void => {
-            if (!repoUrl) {
+            if (repoUrl == "null") {
               this.router.navigateByUrl(Constants.REPO);
             }
         },
