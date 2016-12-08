@@ -36,7 +36,7 @@ public class BlameController {
 
     @RequestMapping(method = RequestMethod.GET, value = REPO_CHECK)
     public String getRepoURL() {
-        return blameService.getRepoUrl();
+        return "{\"gitHubUrl\" : \"" + blameService.getRepoUrl() + "\"}";
     }
 
 }

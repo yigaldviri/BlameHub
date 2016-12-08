@@ -6,6 +6,8 @@ import {NavbarComponent} from "./components/navbar/navbar.component";
 import { NgModule }       from '@angular/core';
 import { BrowserModule }  from '@angular/platform-browser';
 import { FormsModule }    from '@angular/forms';
+import {ApiService} from "./services/apiService";
+import {SettingsService} from "./services/settingsService";
 
 @NgModule({
     imports: [
@@ -14,13 +16,15 @@ import { FormsModule }    from '@angular/forms';
         routing
     ],
     declarations: [
-        AppComponent,
         NavbarComponent,
+        AppComponent,
         SearchComponent,
     ],
     providers: [
         appRoutingProviders,
-        HTTP_PROVIDERS
+        HTTP_PROVIDERS,
+        ApiService,
+        SettingsService
     ],
     bootstrap: [ AppComponent ]
 })

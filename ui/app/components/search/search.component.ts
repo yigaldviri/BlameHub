@@ -1,4 +1,5 @@
 'use strict';
+import {SettingsService} from "../../services/settingsService";
 import { Component }     from '@angular/core';
 import { NgForm }    from '@angular/forms';
 import { MDL } from "../../MDL/MDL";
@@ -30,13 +31,15 @@ import { GroupsResult } from "../../commons/model/GroupsResult";
 
 <ul *ngIf="groupsResult && groupsResult.values.length > 0" class="results">
 
-    <div class="results-title">Ok, you wanna nail one of them:</div>
     <li *ngFor="let group of groupsResult.values" >
         <div class="committer">{{group.commitResult[0].name}}</div>
         <div class="commit" *ngFor="let commit of group.commitResult" >
-            <span class="commit-date">In <i>{{getCommitDate(commit.date)}}</i> he committed</span>
-            <span class="commit-score">(score: {{commit.score}})</span>
-            <div class="commit-message">{{commit.message}}</div>
+         <a [href]="gitHubUrl + commit.id" target="_blank">
+             <div class="commit-message">
+                  <div>{{commit.message}}</div>
+                  <span class="commit-date">{{getCommitDate(commit.date)}}</span>
+             </div>
+         </a>
         </div>
     </li>
 </ul>
@@ -67,8 +70,10 @@ export class SearchComponent {
     terms: any = {term: ""}; // hack because Angular 2 form exception
     groupsResult: GroupsResult;
     inSearch: boolean;
+    gitHubUrl: string;
 
-    constructor(private apiService: ApiService) {
+    constructor(private apiService: ApiService, private settingsService: SettingsService) {
+        this.setGitHubUrl()
     }
 
     search(): void {
@@ -96,6 +101,18 @@ export class SearchComponent {
 
     getCommitDate(date: Date): string {
         return date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
+    }
+
+    setGitHubUrl(): void {
+        this.settingsService.getRepoUrl().subscribe(
+            (repoUrl: string): void => {
+                console.log("repoUrl is " + repoUrl);
+                this.gitHubUrl = repoUrl.replace(".git","/commit/");
+            },
+            (err: any) => {
+                console.log(err);
+            }
+        )
     }
 
 }

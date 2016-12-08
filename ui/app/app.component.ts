@@ -2,22 +2,24 @@ import { Component, } from '@angular/core';
 import { ROUTER_DIRECTIVES } from '@angular/router';
 import {MDL} from "./MDL/MDL";
 import {SearchComponent} from "./components/search/search.component";
-import {ApiService} from "./services/apiService";
 import {Router} from "@angular/router";
 import {Constants} from "./commons/constants";
+import {SettingsService} from "./services/settingsService";
+import {ApiService} from "./services/apiService";
+import {NavbarComponent} from "./components/navbar/navbar.component";
 
 @Component({
     selector: 'my-app',
     template:
         `
-        <div mdl>
+    <div mdl>
         <bh-navbar></bh-navbar>
-            <header>
-                <h1>BlameHub</h1>
-                <p>
-                    Nail the Job to some poor developer
-                </p>
-            </header>
+        <header>
+            <h1>BlameHub</h1>
+            <p>
+                Nail the Job to some poor developer
+            </p>
+        </header>
 
         <main>
             <!-- Routed views go here -->
@@ -25,15 +27,16 @@ import {Constants} from "./commons/constants";
         </main>
     </div>
 `,
-    providers: [ApiService],
-    directives: [ MDL, ROUTER_DIRECTIVES, SearchComponent ]
+    providers: [SettingsService],
+    directives: [ MDL, ROUTER_DIRECTIVES, NavbarComponent ]
 })
 export class AppComponent {
   
-  constructor(private apiService: ApiService, private router: Router) {
-      apiService.getRepoUrl().subscribe(
-        (repoUrl: any): void => {
-            if (!repoUrl._body) {
+  constructor(private settingsService: SettingsService,
+              private router: Router) {
+      settingsService.getRepoUrl().subscribe(
+        (repoUrl: string): void => {
+            if (!repoUrl) {
               this.router.navigateByUrl(Constants.REPO);
             }
         },
