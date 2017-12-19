@@ -23,7 +23,7 @@ In the project-root-directory run:
    
 **Note** that you need to have a solr server up and running. unless you are using docker...    
    
-###Using Docker
+### Using Docker
 You can run BlameHub on your Docker by simply executing [these 2 commands](./run-docker-bundle.sh):
 
 First, we need a Solr container for all of our data.  
