@@ -8,7 +8,7 @@
     "parameters": [],
     "authenticationHeaders": [],
     "parametersScope": "FLOW",
-    "sharedLoginFlowDescription": "New Load Test - Jun 07"
+    "sharedLoginFlowDescription": "New Load Test - Jun 08"
   },
   "flows": [
     {
@@ -30,6 +30,36 @@
         ],
         "meta": {
           "description": "New Flow"
+        },
+        "parameterPools": [],
+        "targetedCountries": [],
+        "iterationDelay": 1000,
+        "cachePenetration": {},
+        "rampUp": 60000,
+        "skipLoginFlow": false,
+        "parameters": []
+      },
+      "runInCi": false
+    },
+    {
+      "id": "1d3b5c2a-d8bd-49c4-847d-03ec4339c34f",
+      "order": 1,
+      "conf": {
+        "duration": 60000,
+        "concurrency": 1,
+        "requests": [
+          {
+            "url": "wwww.1",
+            "method": "GET",
+            "headers": [],
+            "assert": [],
+            "extract": [],
+            "timeout": 60000,
+            "expectedStatus": "SUCCESS"
+          }
+        ],
+        "meta": {
+          "description": "should return me"
         },
         "parameterPools": [],
         "targetedCountries": [],
