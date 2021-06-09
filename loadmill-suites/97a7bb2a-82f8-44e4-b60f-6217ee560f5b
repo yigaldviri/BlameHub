@@ -1,0 +1,157 @@
+{
+  "conf": {
+    "meta": {
+      "description": "GH PR test"
+    },
+    "loginFlow": [
+      {
+        "url": "www.login.com",
+        "method": "GET",
+        "headers": [],
+        "assert": [],
+        "extract": [],
+        "timeout": 60000,
+        "expectedStatus": "SUCCESS"
+      }
+    ],
+    "useCookies": true,
+    "parameters": [
+      {
+        "host": "walla"
+      }
+    ],
+    "authenticationHeaders": [
+      {
+        "logHeader": "logHeader1"
+      }
+    ],
+    "parametersScope": "FLOW",
+    "sharedLoginFlowDescription": "New Load Test - Jun 09"
+  },
+  "flows": [
+    {
+      "id": "84e752bf-97ba-4156-a884-2c64ccf3987d",
+      "order": 0,
+      "conf": {
+        "duration": 60000,
+        "concurrency": 5,
+        "requests": [
+          {
+            "url": "www.${host}.co.il",
+            "method": "GET",
+            "headers": [],
+            "assert": [],
+            "extract": [],
+            "timeout": 60000,
+            "expectedStatus": "SUCCESS"
+          }
+        ],
+        "meta": {
+          "description": "f1"
+        },
+        "parameterPools": [],
+        "targetedCountries": [],
+        "iterationDelay": 1000,
+        "cachePenetration": {},
+        "rampUp": 60000,
+        "skipLoginFlow": false,
+        "parameters": [
+          {
+            "host": "walla"
+          }
+        ]
+      },
+      "runInCi": false
+    }
+  ],
+  "hooks": {
+    "beforeAll": {
+      "duration": 60000,
+      "concurrency": 5,
+      "requests": [
+        {
+          "url": "ba.com/1",
+          "method": "GET",
+          "headers": [],
+          "assert": [],
+          "extract": [],
+          "timeout": 60000,
+          "expectedStatus": "SUCCESS",
+          "description": "BA"
+        }
+      ],
+      "meta": {},
+      "parameterPools": [],
+      "targetedCountries": [],
+      "iterationDelay": 1000,
+      "cachePenetration": {},
+      "rampUp": 60000
+    },
+    "beforeEach": {
+      "duration": 60000,
+      "concurrency": 5,
+      "requests": [
+        {
+          "url": "be.com/1",
+          "method": "GET",
+          "headers": [],
+          "assert": [],
+          "extract": [],
+          "timeout": 60000,
+          "expectedStatus": "SUCCESS",
+          "description": "BE"
+        }
+      ],
+      "meta": {},
+      "parameterPools": [],
+      "targetedCountries": [],
+      "iterationDelay": 1000,
+      "cachePenetration": {},
+      "rampUp": 60000
+    },
+    "afterEach": {
+      "duration": 60000,
+      "concurrency": 5,
+      "requests": [
+        {
+          "url": "ae.com/1",
+          "method": "GET",
+          "headers": [],
+          "assert": [],
+          "extract": [],
+          "timeout": 60000,
+          "expectedStatus": "SUCCESS",
+          "description": "AE"
+        }
+      ],
+      "meta": {},
+      "parameterPools": [],
+      "targetedCountries": [],
+      "iterationDelay": 1000,
+      "cachePenetration": {},
+      "rampUp": 60000
+    },
+    "afterAll": {
+      "duration": 60000,
+      "concurrency": 5,
+      "requests": [
+        {
+          "url": "aa.com/1",
+          "method": "GET",
+          "headers": [],
+          "assert": [],
+          "extract": [],
+          "timeout": 60000,
+          "expectedStatus": "SUCCESS",
+          "description": "AA"
+        }
+      ],
+      "meta": {},
+      "parameterPools": [],
+      "targetedCountries": [],
+      "iterationDelay": 1000,
+      "cachePenetration": {},
+      "rampUp": 60000
+    }
+  }
+}
