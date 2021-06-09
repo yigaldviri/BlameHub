@@ -86,28 +86,26 @@
   ],
   "hooks": {
     "beforeAll": {
-      "conf": {
-        "duration": 60000,
-        "concurrency": 1,
-        "requests": [
-          {
-            "url": "BA.com/1",
-            "method": "GET",
-            "headers": [],
-            "assert": [],
-            "extract": [],
-            "timeout": 60000,
-            "expectedStatus": "SUCCESS",
-            "description": "BA"
-          }
-        ],
-        "meta": {},
-        "parameterPools": [],
-        "targetedCountries": [],
-        "iterationDelay": 1000,
-        "cachePenetration": {},
-        "rampUp": 60000
-      }
+      "duration": 60000,
+      "concurrency": 1,
+      "requests": [
+        {
+          "url": "ba.com/1",
+          "method": "GET",
+          "headers": [],
+          "assert": [],
+          "extract": [],
+          "timeout": 60000,
+          "expectedStatus": "SUCCESS",
+          "description": "BA"
+        }
+      ],
+      "meta": {},
+      "parameterPools": [],
+      "targetedCountries": [],
+      "iterationDelay": 1000,
+      "cachePenetration": {},
+      "rampUp": 60000
     }
   }
 }
