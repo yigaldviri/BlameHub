@@ -5,10 +5,14 @@
     },
     "loginFlow": [],
     "useCookies": true,
-    "parameters": [],
+    "parameters": [
+      {
+        "host": "walla"
+      }
+    ],
     "authenticationHeaders": [],
     "parametersScope": "FLOW",
-    "sharedLoginFlowDescription": "New Load Test - Jun 08"
+    "sharedLoginFlowDescription": "New Load Test - Jun 09"
   },
   "flows": [
     {
@@ -19,7 +23,7 @@
         "concurrency": 1,
         "requests": [
           {
-            "url": "www.walla.co.il1",
+            "url": "www.${host}.co.il1",
             "method": "GET",
             "headers": [],
             "assert": [],
@@ -37,7 +41,11 @@
         "cachePenetration": {},
         "rampUp": 60000,
         "skipLoginFlow": false,
-        "parameters": []
+        "parameters": [
+          {
+            "host": "walla"
+          }
+        ]
       },
       "runInCi": false
     },
@@ -67,10 +75,39 @@
         "cachePenetration": {},
         "rampUp": 60000,
         "skipLoginFlow": false,
-        "parameters": []
+        "parameters": [
+          {
+            "host": "walla"
+          }
+        ]
       },
       "runInCi": false
     }
   ],
-  "hooks": {}
+  "hooks": {
+    "beforeAll": {
+      "conf": {
+        "duration": 60000,
+        "concurrency": 1,
+        "requests": [
+          {
+            "url": "BA.com/1",
+            "method": "GET",
+            "headers": [],
+            "assert": [],
+            "extract": [],
+            "timeout": 60000,
+            "expectedStatus": "SUCCESS",
+            "description": "BA"
+          }
+        ],
+        "meta": {},
+        "parameterPools": [],
+        "targetedCountries": [],
+        "iterationDelay": 1000,
+        "cachePenetration": {},
+        "rampUp": 60000
+      }
+    }
+  }
 }
