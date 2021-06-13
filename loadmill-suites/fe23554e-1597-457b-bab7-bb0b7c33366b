@@ -5,25 +5,20 @@
     },
     "loginFlow": [
       {
-        "url": "${host}.org/status/${st}",
+        "url": "www.mako.co.il",
         "method": "GET",
         "headers": [],
         "assert": [],
-        "extract": [],
+        "extract": [
+          {
+            "host": "ynet"
+          }
+        ],
         "timeout": 60000,
         "expectedStatus": "SUCCESS"
       },
       {
-        "url": "${host}.org/status/${st}",
-        "method": "GET",
-        "headers": [],
-        "assert": [],
-        "extract": [],
-        "timeout": 60000,
-        "expectedStatus": "SUCCESS"
-      },
-      {
-        "url": "${host}.org/status/${st}",
+        "url": "www.${host}.${co}.il",
         "method": "GET",
         "headers": [],
         "assert": [],
@@ -34,6 +29,12 @@
     ],
     "useCookies": true,
     "parameters": [
+      {
+        "host": "walla"
+      },
+      {
+        "co": "co"
+      },
       {
         "st": [
           "200",
@@ -61,11 +62,11 @@
     ],
     "authenticationHeaders": [
       {
-        "head1": "rivi1"
+        "a": ""
       }
     ],
     "parametersScope": "FLOW",
-    "sharedLoginFlowDescription": "Before Each2 "
+    "sharedLoginFlowDescription": "login"
   },
   "flows": [
     {
@@ -95,6 +96,12 @@
         "rampUp": 60000,
         "skipLoginFlow": false,
         "parameters": [
+          {
+            "host": "walla"
+          },
+          {
+            "co": "co"
+          },
           {
             "st": [
               "200",
@@ -152,24 +159,182 @@
       "concurrency": 1,
       "requests": [
         {
-          "url": "httpbin.org/status/${st}",
-          "method": "GET",
-          "headers": [],
+          "url": "https://${host}/health",
+          "method": "POST",
+          "headers": [
+            {
+              "x-forwarded-for": "213.57.97.210"
+            },
+            {
+              "x-forwarded-proto": "https"
+            },
+            {
+              "x-forwarded-port": "443"
+            },
+            {
+              "x-amzn-trace-id": "Root=1-5c0d275b-c556b3227adbfa5131b03727"
+            },
+            {
+              "accept": "application/json"
+            },
+            {
+              "x-unity-version": "2017.1.1f1"
+            },
+            {
+              "Authorization": "Bearer ${SessionToken}"
+            }
+          ],
           "assert": [],
-          "extract": [],
-          "timeout": 60000,
-          "expectedStatus": "SUCCESS"
+          "extract": [
+            {
+              "NewPRGateWay": "${__regexp(host,'(ci.*)-gameserver.test-moonactive.net','')}"
+            },
+            {
+              "isNewPr": "${__contains(NewPRGateWay,'ci')}"
+            },
+            {
+              "gateway": "-gateway."
+            },
+            {
+              "domain": "test-moonactive.net"
+            },
+            {
+              "master": "master."
+            },
+            {
+              "new_flow": "${NewPRGateWay}${gateway}${domain}"
+            },
+            {
+              "old_flow": "${master}${domain}"
+            },
+            {
+              "full": "${__if_then_else(isNewPr,new_flow,old_flow)}"
+            },
+            {
+              "TPM": "-test-profile"
+            },
+            {
+              "new_flow_TPM": "${NewPRGateWay}${TPM}"
+            },
+            {
+              "old_flow_TPM": "test-profile"
+            },
+            {
+              "TPM_URL": "${__if_then_else(isNewPr,new_flow_TPM,old_flow_TPM)}"
+            },
+            {
+              "EnvMS": "${__regexp(host,'\\.(.*)-moonactive','noMatch')}"
+            },
+            {
+              "IsTest": "${EnvMS == 'test'}"
+            },
+            {
+              "EnvGateWayMS": "${__if_then_else(IsTest,full,'release-test.cm-staging-moonactive.net')}"
+            }
+          ],
+          "timeout": 25000,
+          "expectedStatus": "SUCCESS",
+          "description": "Health- checking env",
+          "postData": {
+            "text": "",
+            "mimeType": "application/x-www-form-urlencoded"
+          }
+        },
+        {
+          "url": "https://${EnvGateWayMS}/api/v1/authentication/registerStart",
+          "method": "POST",
+          "headers": [
+            {
+              "x-forwarded-for": "213.57.97.210"
+            },
+            {
+              "x-forwarded-proto": "https"
+            },
+            {
+              "x-forwarded-port": "443"
+            },
+            {
+              "x-amzn-trace-id": "Root=1-5c72666c-937e6ba41a2a2f4cfba09c3a"
+            },
+            {
+              "accept": "application/json"
+            },
+            {
+              "x-unity-version": "2017.1.1f1"
+            }
+          ],
+          "assert": [],
+          "extract": [
+            {
+              "Version": {
+                "jsonPath": "$.challenge.version"
+              }
+            },
+            {
+              "Question": {
+                "jsonPath": "$.challenge.question"
+              }
+            },
+            {
+              "Hash": {
+                "jsonPath": "$.challenge.hash"
+              }
+            }
+          ],
+          "timeout": 25000,
+          "expectedStatus": "SUCCESS",
+          "postData": {
+            "text": "{\t\n    \"deviceId\": \"${DeviceID}\" \n}",
+            "mimeType": "application/json"
+          }
         }
       ],
       "meta": {},
       "parameters": [
         {
-          "st": [
-            "200",
-            "200",
-            "200",
-            "403"
+          "host": [
+            "octopus.cm-staging-moonactive.net",
+            "pr-2893.test-moonactive.net",
+            "master.test-moonactive.net",
+            "thundercats.cm-staging-moonactive.net",
+            "release-staging.cm-staging-moonactive.net",
+            "india.cm-staging-moonactive.net",
+            "pheonix.cm-staging-moonactive.net",
+            "pr-2693.test-moonactive.net",
+            "feature-cor-2621-ci-alignment.test-moonactive.net",
+            "loadtest.cm-staging-moonactive.net",
+            "6799291-te-tournament-sdk-to-gineric-client.test-moonactive.net"
           ]
+        },
+        {
+          "DeviceID": "LoadMillUser-${__random_uuid()}"
+        },
+        {
+          "Profile": "3_5_fband_QALoadmillTournaments"
+        },
+        {
+          "Token": "899813"
+        },
+        {
+          "EnvMS": "Error"
+        },
+        {
+          "protocol": "https:"
+        },
+        {
+          "Token_1": "584065"
+        },
+        {
+          "EnvGateWayMS": "FailedToChangeURL-moonactive.net"
+        },
+        {
+          "SkipFTUE": "20"
+        },
+        {
+          "Token_2": "982271"
+        },
+        {
+          "TPM_URL": "test-profile"
         }
       ],
       "parameterPools": [],
@@ -178,14 +343,18 @@
       "cachePenetration": {},
       "rampUp": 60000,
       "notifications": [],
-      "authenticationHeaders": []
+      "authenticationHeaders": [
+        {
+          "EnvGateWayMS": "123"
+        }
+      ]
     },
     "afterAll": {
       "duration": 60000,
       "concurrency": 1,
       "requests": [
         {
-          "url": "222",
+          "url": "111",
           "method": "GET",
           "headers": [],
           "assert": [],
@@ -205,11 +374,11 @@
   "dependencies": {
     "hooks": {
       "beforeAllId": "70bc611a-b5b3-45bb-8e68-eb13a1a0a9d1",
-      "beforeEachId": "5ec59899-752b-4d23-8f99-92c53fff85fd",
+      "beforeEachId": "060160fc-aeda-4d79-aea5-02e550889008",
       "afterAllId": "c4d2b57e-f36a-446b-9ce1-562dbf03639e"
     },
     "login": {
-      "id": "201b35eb-17ab-4570-ac7c-95d67ed7808f"
+      "id": "4f2f276b-27be-4f7b-9aec-9ea8bb0c0f48"
     }
   }
 }
