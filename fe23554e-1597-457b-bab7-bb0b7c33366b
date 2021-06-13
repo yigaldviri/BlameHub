@@ -1,0 +1,195 @@
+{
+  "conf": {
+    "meta": {
+      "description": "export me"
+    },
+    "useCookies": true,
+    "parameters": [
+      {
+        "st": [
+          "200",
+          "200",
+          "200",
+          "200",
+          "403"
+        ]
+      },
+      {
+        "host": "httpbin"
+      }
+    ],
+    "authenticationHeaders": [
+      {
+        "head1": "rivi1"
+      }
+    ],
+    "parametersScope": "FLOW",
+    "loginFlow": [
+      {
+        "url": "${host}.org/status/${st}",
+        "method": "GET",
+        "headers": [],
+        "assert": [],
+        "extract": [],
+        "timeout": 60000,
+        "expectedStatus": "SUCCESS"
+      },
+      {
+        "url": "${host}.org/status/${st}",
+        "method": "GET",
+        "headers": [],
+        "assert": [],
+        "extract": [],
+        "timeout": 60000,
+        "expectedStatus": "SUCCESS"
+      },
+      {
+        "url": "${host}.org/status/${st}",
+        "method": "GET",
+        "headers": [],
+        "assert": [],
+        "extract": [],
+        "timeout": 60000,
+        "expectedStatus": "SUCCESS"
+      }
+    ],
+    "sharedLoginFlowDescription": "hosted httpbin with random 403"
+  },
+  "flows": [
+    {
+      "id": "6344f38a-d555-4d35-8e6b-f059a7057556",
+      "order": 0,
+      "conf": {
+        "duration": 60000,
+        "concurrency": 1,
+        "requests": [
+          {
+            "url": "www.walla.co.il",
+            "method": "GET",
+            "headers": [],
+            "assert": [],
+            "extract": [],
+            "timeout": 60000,
+            "expectedStatus": "SUCCESS"
+          }
+        ],
+        "meta": {
+          "description": "New Flow"
+        },
+        "parameterPools": [],
+        "targetedCountries": [],
+        "iterationDelay": 1000,
+        "cachePenetration": {},
+        "rampUp": 60000,
+        "skipLoginFlow": false,
+        "parameters": [
+          {
+            "st": [
+              "200",
+              "200",
+              "200",
+              "200",
+              "403"
+            ]
+          },
+          {
+            "host": "httpbin"
+          }
+        ]
+      },
+      "runInCi": false
+    }
+  ],
+  "hooks": {
+    "beforeAll": {
+      "duration": 60000,
+      "concurrency": 1,
+      "requests": [
+        {
+          "url": "www.ba.com/1",
+          "method": "GET",
+          "headers": [],
+          "assert": [],
+          "extract": [],
+          "timeout": 60000,
+          "expectedStatus": "SUCCESS",
+          "description": "BA"
+        }
+      ],
+      "meta": {},
+      "parameterPools": [],
+      "targetedCountries": [],
+      "iterationDelay": 1000,
+      "cachePenetration": {},
+      "rampUp": 60000
+    },
+    "beforeEach": {
+      "duration": 60000,
+      "concurrency": 1,
+      "requests": [
+        {
+          "url": "${host}.org/status/${st}",
+          "method": "GET",
+          "headers": [],
+          "assert": [],
+          "extract": [],
+          "timeout": 60000,
+          "expectedStatus": "SUCCESS"
+        },
+        {
+          "url": "${host}.org/status/${st}",
+          "method": "GET",
+          "headers": [],
+          "assert": [],
+          "extract": [],
+          "timeout": 60000,
+          "expectedStatus": "SUCCESS"
+        },
+        {
+          "url": "${host}.org/status/${st}",
+          "method": "GET",
+          "headers": [],
+          "assert": [],
+          "extract": [],
+          "timeout": 60000,
+          "expectedStatus": "SUCCESS"
+        }
+      ],
+      "meta": {},
+      "parameters": [
+        {
+          "st": [
+            "200",
+            "200",
+            "200",
+            "200",
+            "403"
+          ]
+        },
+        {
+          "host": "httpbin"
+        }
+      ],
+      "parameterPools": [],
+      "targetedCountries": [],
+      "iterationDelay": 1000,
+      "cachePenetration": {},
+      "rampUp": 60000,
+      "notifications": [],
+      "authenticationHeaders": [
+        {
+          "head1": "rivi1"
+        }
+      ]
+    }
+  },
+  "dependencies": {
+    "hooks": {
+      "beforeAllId": "70bc611a-b5b3-45bb-8e68-eb13a1a0a9d1",
+      "beforeEachId": "201b35eb-17ab-4570-ac7c-95d67ed7808f"
+    },
+    "login": {
+      "id": "201b35eb-17ab-4570-ac7c-95d67ed7808f"
+    }
+  }
+}
