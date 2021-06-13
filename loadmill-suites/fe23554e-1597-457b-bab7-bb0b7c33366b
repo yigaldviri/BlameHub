@@ -45,6 +45,18 @@
       },
       {
         "host": "httpbin"
+      },
+      {
+        "st": [
+          "200",
+          "200",
+          "200",
+          "200",
+          "403"
+        ]
+      },
+      {
+        "host": "httpbin"
       }
     ],
     "authenticationHeaders": [
@@ -53,7 +65,7 @@
       }
     ],
     "parametersScope": "FLOW",
-    "sharedLoginFlowDescription": "Before Each"
+    "sharedLoginFlowDescription": "Before Each2 "
   },
   "flows": [
     {
@@ -83,6 +95,18 @@
         "rampUp": 60000,
         "skipLoginFlow": false,
         "parameters": [
+          {
+            "st": [
+              "200",
+              "200",
+              "200",
+              "200",
+              "403"
+            ]
+          },
+          {
+            "host": "httpbin"
+          },
           {
             "st": [
               "200",
@@ -128,25 +152,7 @@
       "concurrency": 1,
       "requests": [
         {
-          "url": "${host}.org/status/${st}",
-          "method": "GET",
-          "headers": [],
-          "assert": [],
-          "extract": [],
-          "timeout": 60000,
-          "expectedStatus": "SUCCESS"
-        },
-        {
-          "url": "${host}.org/status/${st}",
-          "method": "GET",
-          "headers": [],
-          "assert": [],
-          "extract": [],
-          "timeout": 60000,
-          "expectedStatus": "SUCCESS"
-        },
-        {
-          "url": "${host}.org/status/${st}",
+          "url": "httpbin.org/status/${st}",
           "method": "GET",
           "headers": [],
           "assert": [],
@@ -156,24 +162,30 @@
         }
       ],
       "meta": {},
+      "parameters": [
+        {
+          "st": [
+            "200",
+            "200",
+            "200",
+            "403"
+          ]
+        }
+      ],
       "parameterPools": [],
       "targetedCountries": [],
       "iterationDelay": 1000,
       "cachePenetration": {},
       "rampUp": 60000,
       "notifications": [],
-      "authenticationHeaders": [
-        {
-          "head1": "rivi1"
-        }
-      ]
+      "authenticationHeaders": []
     },
     "afterAll": {
       "duration": 60000,
       "concurrency": 1,
       "requests": [
         {
-          "url": "1111",
+          "url": "222",
           "method": "GET",
           "headers": [],
           "assert": [],
@@ -193,7 +205,7 @@
   "dependencies": {
     "hooks": {
       "beforeAllId": "70bc611a-b5b3-45bb-8e68-eb13a1a0a9d1",
-      "beforeEachId": "201b35eb-17ab-4570-ac7c-95d67ed7808f",
+      "beforeEachId": "5ec59899-752b-4d23-8f99-92c53fff85fd",
       "afterAllId": "c4d2b57e-f36a-446b-9ce1-562dbf03639e"
     },
     "login": {
