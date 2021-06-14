@@ -1,0 +1,52 @@
+{
+  "conf": {
+    "meta": {
+      "description": "Suite to sync"
+    },
+    "loginFlow": [],
+    "useCookies": true,
+    "parameters": [],
+    "authenticationHeaders": [],
+    "parametersScope": "FLOW",
+    "sharedLoginFlowDescription": "New Load Test - Jun 14"
+  },
+  "flows": [
+    {
+      "id": "59a203fb-5029-40d9-827b-744e9fbc0670",
+      "order": 0,
+      "conf": {
+        "duration": 60000,
+        "concurrency": 5,
+        "requests": [
+          {
+            "url": "www.walla.co.il",
+            "method": "GET",
+            "headers": [],
+            "assert": [],
+            "extract": [],
+            "timeout": 60000,
+            "expectedStatus": "SUCCESS"
+          }
+        ],
+        "meta": {
+          "description": "New Flow"
+        },
+        "parameterPools": [],
+        "targetedCountries": [],
+        "iterationDelay": 1000,
+        "cachePenetration": {},
+        "rampUp": 60000,
+        "skipLoginFlow": false,
+        "parameters": []
+      },
+      "runInCi": false
+    }
+  ],
+  "hooks": {},
+  "dependencies": {
+    "hooks": {},
+    "login": {
+      "id": "af815826-82c1-4a0e-a19e-ebd1869cd827"
+    }
+  }
+}
