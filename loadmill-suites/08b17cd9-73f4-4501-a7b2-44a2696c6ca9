@@ -12,7 +12,7 @@
     ],
     "authenticationHeaders": [],
     "parametersScope": "FLOW",
-    "sharedLoginFlowDescription": "New Load Test - Jun 09"
+    "sharedLoginFlowDescription": "New Load Test - Jun 13"
   },
   "flows": [
     {
@@ -34,40 +34,6 @@
         ],
         "meta": {
           "description": "New Flow"
-        },
-        "parameterPools": [],
-        "targetedCountries": [],
-        "iterationDelay": 1000,
-        "cachePenetration": {},
-        "rampUp": 60000,
-        "skipLoginFlow": false,
-        "parameters": [
-          {
-            "host": "walla"
-          }
-        ]
-      },
-      "runInCi": false
-    },
-    {
-      "id": "1d3b5c2a-d8bd-49c4-847d-03ec4339c34f",
-      "order": 1,
-      "conf": {
-        "duration": 60000,
-        "concurrency": 1,
-        "requests": [
-          {
-            "url": "wwww.1",
-            "method": "GET",
-            "headers": [],
-            "assert": [],
-            "extract": [],
-            "timeout": 60000,
-            "expectedStatus": "SUCCESS"
-          }
-        ],
-        "meta": {
-          "description": "should return me"
         },
         "parameterPools": [],
         "targetedCountries": [],
@@ -106,6 +72,14 @@
       "iterationDelay": 1000,
       "cachePenetration": {},
       "rampUp": 60000
+    }
+  },
+  "dependencies": {
+    "hooks": {
+      "beforeAllId": "e5d652ef-6088-4df3-a5cc-a8b39c6dc680"
+    },
+    "login": {
+      "id": "5d9c8a49-8e38-4816-84c7-4705668538e3"
     }
   }
 }
