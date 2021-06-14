@@ -3,10 +3,32 @@
     "meta": {
       "description": "Suite to sync"
     },
-    "loginFlow": [],
+    "loginFlow": [
+      {
+        "url": "myLogin.com",
+        "method": "GET",
+        "headers": [],
+        "assert": [],
+        "extract": [],
+        "timeout": 60000,
+        "expectedStatus": "SUCCESS"
+      }
+    ],
     "useCookies": true,
-    "parameters": [],
-    "authenticationHeaders": [],
+    "auth": {
+      "user": "aaaa",
+      "password": "aaaa"
+    },
+    "parameters": [
+      {
+        "Suiteparam1": "111"
+      }
+    ],
+    "authenticationHeaders": [
+      {
+        "myHead": "myVal"
+      }
+    ],
     "parametersScope": "FLOW",
     "sharedLoginFlowDescription": "New Load Test - Jun 14"
   },
@@ -37,9 +59,47 @@
         "cachePenetration": {},
         "rampUp": 60000,
         "skipLoginFlow": false,
-        "parameters": []
+        "parameters": [
+          {
+            "Suiteparam1": "111"
+          }
+        ]
       },
       "runInCi": false
+    },
+    {
+      "id": "ee827d31-1f27-4108-8150-7a00668e7da3",
+      "order": 1,
+      "conf": {
+        "duration": 60000,
+        "concurrency": 5,
+        "requests": [
+          {
+            "url": "www.walla.co.oil",
+            "method": "GET",
+            "headers": [],
+            "assert": [],
+            "extract": [],
+            "timeout": 60000,
+            "expectedStatus": "SUCCESS"
+          }
+        ],
+        "meta": {
+          "description": "New Flow2 with CI"
+        },
+        "parameterPools": [],
+        "targetedCountries": [],
+        "iterationDelay": 1000,
+        "cachePenetration": {},
+        "rampUp": 60000,
+        "skipLoginFlow": false,
+        "parameters": [
+          {
+            "Suiteparam1": "111"
+          }
+        ]
+      },
+      "runInCi": true
     }
   ],
   "hooks": {},
