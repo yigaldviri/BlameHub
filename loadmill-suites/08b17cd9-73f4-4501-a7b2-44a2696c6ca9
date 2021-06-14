@@ -100,7 +100,7 @@
           }
         ]
       },
-      "runInCi": false
+      "runInCi": true
     }
   ],
   "hooks": {
