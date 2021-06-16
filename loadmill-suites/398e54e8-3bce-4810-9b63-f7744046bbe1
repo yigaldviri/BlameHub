@@ -5,7 +5,20 @@
     },
     "loginFlow": [
       {
-        "url": "www.login.co.il/nohooks",
+        "url": "www.mako.co.il",
+        "method": "GET",
+        "headers": [],
+        "assert": [],
+        "extract": [
+          {
+            "host": "ynet"
+          }
+        ],
+        "timeout": 60000,
+        "expectedStatus": "SUCCESS"
+      },
+      {
+        "url": "www.${host}.${co}.il",
         "method": "GET",
         "headers": [],
         "assert": [],
@@ -15,14 +28,21 @@
       }
     ],
     "useCookies": true,
-    "parameters": [],
+    "parameters": [
+      {
+        "host": "walla"
+      },
+      {
+        "co": "co"
+      }
+    ],
     "authenticationHeaders": [
       {
-        "as": "asd"
+        "a": ""
       }
     ],
     "parametersScope": "FLOW",
-    "sharedLoginFlowDescription": "New Load Test - Jun 16"
+    "sharedLoginFlowDescription": "login"
   },
   "flows": [
     {
@@ -51,7 +71,14 @@
         "cachePenetration": {},
         "rampUp": 60000,
         "skipLoginFlow": false,
-        "parameters": []
+        "parameters": [
+          {
+            "host": "walla"
+          },
+          {
+            "co": "co"
+          }
+        ]
       },
       "runInCi": false
     }
@@ -293,7 +320,7 @@
       "afterEachId": "42eaa7ec-e860-4ca8-9df5-a206d059c7e8"
     },
     "login": {
-      "id": "fd014b81-89dc-4667-87fa-c00184e4d4d3"
+      "id": "4f2f276b-27be-4f7b-9aec-9ea8bb0c0f48"
     }
   }
 }
