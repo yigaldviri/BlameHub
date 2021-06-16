@@ -1,0 +1,66 @@
+{
+  "conf": {
+    "meta": {
+      "description": "GH hooks sync"
+    },
+    "loginFlow": [
+      {
+        "url": "www.login.co.il/nohooks",
+        "method": "GET",
+        "headers": [],
+        "assert": [],
+        "extract": [],
+        "timeout": 60000,
+        "expectedStatus": "SUCCESS"
+      }
+    ],
+    "useCookies": true,
+    "parameters": [],
+    "authenticationHeaders": [
+      {
+        "as": "asd"
+      }
+    ],
+    "parametersScope": "FLOW",
+    "sharedLoginFlowDescription": "New Load Test - Jun 16"
+  },
+  "flows": [
+    {
+      "id": "ee1fe3bb-da37-4d6a-9547-1831be3d8afc",
+      "order": 0,
+      "conf": {
+        "duration": 60000,
+        "concurrency": 1,
+        "requests": [
+          {
+            "url": "www.walla.co.il/nohooks",
+            "method": "GET",
+            "headers": [],
+            "assert": [],
+            "extract": [],
+            "timeout": 60000,
+            "expectedStatus": "SUCCESS"
+          }
+        ],
+        "meta": {
+          "description": "New Flow"
+        },
+        "parameterPools": [],
+        "targetedCountries": [],
+        "iterationDelay": 1000,
+        "cachePenetration": {},
+        "rampUp": 60000,
+        "skipLoginFlow": false,
+        "parameters": []
+      },
+      "runInCi": false
+    }
+  ],
+  "hooks": {},
+  "dependencies": {
+    "hooks": {},
+    "login": {
+      "id": "fd014b81-89dc-4667-87fa-c00184e4d4d3"
+    }
+  }
+}
