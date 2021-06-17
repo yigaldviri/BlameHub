@@ -41,6 +41,16 @@
         ]
       },
       {
+        "host": "httpbin"
+      },
+      {
+        "st": [
+          "200",
+          "201",
+          "202"
+        ]
+      },
+      {
         "Suiteparam1": "111"
       },
       {
@@ -104,6 +114,16 @@
             ]
           },
           {
+            "host": "httpbin"
+          },
+          {
+            "st": [
+              "200",
+              "201",
+              "202"
+            ]
+          },
+          {
             "Suiteparam1": "111"
           },
           {
@@ -140,6 +160,16 @@
         "rampUp": 60000,
         "skipLoginFlow": false,
         "parameters": [
+          {
+            "host": "httpbin"
+          },
+          {
+            "st": [
+              "200",
+              "201",
+              "202"
+            ]
+          },
           {
             "host": "httpbin"
           },
