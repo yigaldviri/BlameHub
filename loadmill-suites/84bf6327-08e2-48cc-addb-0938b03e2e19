@@ -3,12 +3,33 @@
     "meta": {
       "description": "Suite to sync"
     },
+    "loginFlow": [
+      {
+        "url": "${host}.org/${st}",
+        "method": "GET",
+        "headers": [],
+        "assert": [],
+        "extract": [],
+        "timeout": 60000,
+        "expectedStatus": "SUCCESS"
+      }
+    ],
     "useCookies": true,
     "auth": {
       "user": "aaaa",
       "password": "aaaa"
     },
     "parameters": [
+      {
+        "host": "httpbin"
+      },
+      {
+        "st": [
+          "200",
+          "201",
+          "202"
+        ]
+      },
       {
         "host": "httpbin"
       },
@@ -32,17 +53,6 @@
       }
     ],
     "parametersScope": "FLOW",
-    "loginFlow": [
-      {
-        "url": "${host}.org/${st}",
-        "method": "GET",
-        "headers": [],
-        "assert": [],
-        "extract": [],
-        "timeout": 60000,
-        "expectedStatus": "SUCCESS"
-      }
-    ],
     "sharedLoginFlowDescription": "login"
   },
   "flows": [
@@ -84,6 +94,16 @@
             ]
           },
           {
+            "host": "httpbin"
+          },
+          {
+            "st": [
+              "200",
+              "201",
+              "202"
+            ]
+          },
+          {
             "Suiteparam1": "111"
           },
           {
@@ -94,7 +114,7 @@
       "runInCi": false
     },
     {
-      "id": "6cef348e-a44c-42b5-a6c1-711e4eccefba",
+      "id": "41c48d16-1813-456c-9ac8-571ed8d629f2",
       "order": 1,
       "conf": {
         "duration": 60000,
@@ -131,6 +151,16 @@
             ]
           },
           {
+            "host": "httpbin"
+          },
+          {
+            "st": [
+              "200",
+              "201",
+              "202"
+            ]
+          },
+          {
             "Suiteparam1": "111"
           },
           {
@@ -143,26 +173,33 @@
   ],
   "hooks": {
     "beforeAll": {
-      "duration": 60000,
+      "duration": 120000,
       "concurrency": 5,
       "requests": [
         {
-          "url": "www.1",
+          "url": "www.ynet.co.il?p2=${p2}",
           "method": "GET",
           "headers": [],
           "assert": [],
           "extract": [],
           "timeout": 60000,
-          "expectedStatus": "SUCCESS",
-          "description": "BA"
+          "expectedStatus": "SUCCESS"
         }
       ],
       "meta": {},
+      "parameters": [
+        {
+          "p2": "valp2"
+        }
+      ],
       "parameterPools": [],
       "targetedCountries": [],
       "iterationDelay": 1000,
       "cachePenetration": {},
-      "rampUp": 60000
+      "rampUp": 60000,
+      "useCookies": true,
+      "notifications": [],
+      "authenticationHeaders": []
     },
     "beforeEach": {
       "duration": 60000,
@@ -218,7 +255,7 @@
   },
   "dependencies": {
     "hooks": {
-      "beforeAllId": "1a4c6a70-f561-4805-8ebd-96f261e5c61c",
+      "beforeAllId": "fa637861-33f7-42fd-b368-d1ff6efdfcb4",
       "beforeEachId": "8d242e95-bd88-4428-9644-044eb25863ec",
       "afterAllId": "fa637861-33f7-42fd-b368-d1ff6efdfcb4"
     },
