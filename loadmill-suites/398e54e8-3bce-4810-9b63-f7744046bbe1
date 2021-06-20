@@ -34,6 +34,12 @@
       },
       {
         "co": "co"
+      },
+      {
+        "host": "walla"
+      },
+      {
+        "co": "co"
       }
     ],
     "authenticationHeaders": [
@@ -72,6 +78,12 @@
         "rampUp": 60000,
         "skipLoginFlow": false,
         "parameters": [
+          {
+            "host": "walla"
+          },
+          {
+            "co": "co"
+          },
           {
             "host": "walla"
           },
