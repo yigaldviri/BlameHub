@@ -3,11 +3,29 @@
     "meta": {
       "description": "New Test Suite - Jun 21"
     },
-    "useCookies": true,
-    "loginFlow": [],
-    "authenticationHeaders": [],
-    "sharedLoginFlowDescription": "New Flow",
-    "parameters": []
+    "loginFlow": [
+      {
+        "url": "www.login1",
+        "method": "GET",
+        "headers": [],
+        "assert": [],
+        "extract": [],
+        "timeout": 60000,
+        "expectedStatus": "SUCCESS"
+      }
+    ],
+    "auth": {
+      "user": "1111",
+      "password": "1111"
+    },
+    "parameters": [],
+    "authenticationHeaders": [
+      {
+        "hlog1": "hlogval1"
+      }
+    ],
+    "parametersScope": "FLOW",
+    "sharedLoginFlowDescription": "New Load Test - Jun 21"
   },
   "flows": [
     {
