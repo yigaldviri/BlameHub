@@ -83,18 +83,46 @@
   ],
   "hooks": {
     "beforeAll": {
-      "duration": 60000,
+      "duration": 120000,
       "concurrency": 5,
       "requests": [
         {
-          "url": "ba1",
+          "url": "www.walla.co.li?p1=${p1}",
           "method": "GET",
           "headers": [],
           "assert": [],
           "extract": [],
           "timeout": 60000,
-          "expectedStatus": "SUCCESS",
-          "description": "BA1"
+          "expectedStatus": "SUCCESS"
+        }
+      ],
+      "meta": {},
+      "parameters": [
+        {
+          "p1": "BA"
+        }
+      ],
+      "parameterPools": [],
+      "targetedCountries": [],
+      "iterationDelay": 1000,
+      "cachePenetration": {},
+      "rampUp": 60000,
+      "useCookies": true,
+      "notifications": [],
+      "authenticationHeaders": []
+    },
+    "beforeEach": {
+      "duration": 60000,
+      "concurrency": 5,
+      "requests": [
+        {
+          "url": "BE1",
+          "method": "GET",
+          "headers": [],
+          "assert": [],
+          "extract": [],
+          "timeout": 60000,
+          "expectedStatus": "SUCCESS"
         }
       ],
       "meta": {},
@@ -103,11 +131,42 @@
       "iterationDelay": 1000,
       "cachePenetration": {},
       "rampUp": 60000
+    },
+    "afterAll": {
+      "duration": 120000,
+      "concurrency": 5,
+      "requests": [
+        {
+          "url": "www.ynet.co.il?p2=${p2}",
+          "method": "GET",
+          "headers": [],
+          "assert": [],
+          "extract": [],
+          "timeout": 60000,
+          "expectedStatus": "SUCCESS"
+        }
+      ],
+      "meta": {},
+      "parameters": [
+        {
+          "p2": "valp2"
+        }
+      ],
+      "parameterPools": [],
+      "targetedCountries": [],
+      "iterationDelay": 1000,
+      "cachePenetration": {},
+      "rampUp": 60000,
+      "useCookies": true,
+      "notifications": [],
+      "authenticationHeaders": []
     }
   },
   "dependencies": {
     "hooks": {
-      "beforeAllId": "7e1f2668-f8f4-4f3b-bc1d-a4966f6896f8"
+      "beforeAllId": "0db680f5-3604-4dfe-b57c-4597d9699899",
+      "beforeEachId": "7052ab34-5ae2-48ac-acb0-bbb4216b1b20",
+      "afterAllId": "fa637861-33f7-42fd-b368-d1ff6efdfcb4"
     },
     "login": {
       "id": "2923535a-c0ed-4108-a8fd-1c820c3419ee"
