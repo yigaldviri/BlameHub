@@ -81,9 +81,34 @@
       "runInCi": false
     }
   ],
-  "hooks": {},
+  "hooks": {
+    "beforeAll": {
+      "duration": 60000,
+      "concurrency": 5,
+      "requests": [
+        {
+          "url": "ba1",
+          "method": "GET",
+          "headers": [],
+          "assert": [],
+          "extract": [],
+          "timeout": 60000,
+          "expectedStatus": "SUCCESS",
+          "description": "BA1"
+        }
+      ],
+      "meta": {},
+      "parameterPools": [],
+      "targetedCountries": [],
+      "iterationDelay": 1000,
+      "cachePenetration": {},
+      "rampUp": 60000
+    }
+  },
   "dependencies": {
-    "hooks": {},
+    "hooks": {
+      "beforeAllId": "7e1f2668-f8f4-4f3b-bc1d-a4966f6896f8"
+    },
     "login": {
       "id": "2923535a-c0ed-4108-a8fd-1c820c3419ee"
     }
