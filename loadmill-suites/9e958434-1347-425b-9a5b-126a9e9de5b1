@@ -3,20 +3,9 @@
     "meta": {
       "description": "New Test Suite - Jun 21"
     },
-    "loginFlow": [
-      {
-        "url": "${host}.org/${st}",
-        "method": "GET",
-        "headers": [],
-        "assert": [],
-        "extract": [],
-        "timeout": 60000,
-        "expectedStatus": "SUCCESS"
-      }
-    ],
     "auth": {
-      "user": "1111",
-      "password": "1111"
+      "user": "22222",
+      "password": "2222"
     },
     "parameters": [
       {
@@ -32,11 +21,22 @@
     ],
     "authenticationHeaders": [
       {
-        "sharedLogHead": "shareLogVar"
+        "sharedlog2": "sharelog2 val"
       }
     ],
     "parametersScope": "FLOW",
-    "sharedLoginFlowDescription": "login"
+    "loginFlow": [
+      {
+        "url": "www.walla.co.il",
+        "method": "GET",
+        "headers": [],
+        "assert": [],
+        "extract": [],
+        "timeout": 60000,
+        "expectedStatus": "SUCCESS"
+      }
+    ],
+    "sharedLoginFlowDescription": "login2"
   },
   "flows": [
     {
@@ -85,7 +85,7 @@
   "dependencies": {
     "hooks": {},
     "login": {
-      "id": "51d04fe4-5051-4b20-bd89-0d53c8e2eda1"
+      "id": "2923535a-c0ed-4108-a8fd-1c820c3419ee"
     }
   }
 }
