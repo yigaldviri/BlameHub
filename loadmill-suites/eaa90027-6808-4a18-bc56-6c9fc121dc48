@@ -54,6 +54,17 @@
       "cachePenetration": {},
       "rampUp": 60000
     },
+    "beforeEach": {
+      "duration": 60000,
+      "concurrency": 1,
+      "requests": [],
+      "meta": {},
+      "parameterPools": [],
+      "targetedCountries": [],
+      "iterationDelay": 1000,
+      "cachePenetration": {},
+      "rampUp": 60000
+    },
     "afterEach": {
       "duration": 60000,
       "concurrency": 1,
@@ -69,6 +80,7 @@
   "dependencies": {
     "hooks": {
       "beforeAllId": "d64fd29a-a3d5-4fc9-b3c6-abb842a94dbf",
+      "beforeEachId": "edbbb7a0-aef7-40e5-8964-9ec1ebd4baa0",
       "afterEachId": "15cf193c-e7a8-4c36-8c89-cd9a5e1ea500"
     },
     "login": {
