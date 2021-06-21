@@ -5,7 +5,7 @@
     },
     "loginFlow": [
       {
-        "url": "www.ynet.co.il?logininline",
+        "url": "www.wallw.co.il",
         "method": "GET",
         "headers": [],
         "assert": [],
@@ -21,16 +21,15 @@
     },
     "parameters": [
       {
+        "p1": "1"
+      },
+      {
         "pinsiute": "val"
       }
     ],
-    "authenticationHeaders": [
-      {
-        "h1": "val1"
-      }
-    ],
+    "authenticationHeaders": [],
     "parametersScope": "FLOW",
-    "sharedLoginFlowDescription": "New Load Test - Jun 21"
+    "sharedLoginFlowDescription": "Login1"
   },
   "flows": [
     {
@@ -61,6 +60,9 @@
         "skipLoginFlow": false,
         "parameters": [
           {
+            "p1": "1"
+          },
+          {
             "pinsiute": "val"
           }
         ]
@@ -68,7 +70,7 @@
       "runInCi": false
     },
     {
-      "id": "c83649f4-5a59-4553-bee8-8cec9013ff75",
+      "id": "e3910f25-ebcf-4fa8-8f19-97f9a714699a",
       "order": 1,
       "conf": {
         "duration": 60000,
@@ -95,6 +97,9 @@
         "skipLoginFlow": false,
         "parameters": [
           {
+            "p1": "1"
+          },
+          {
             "pinsiute": "val"
           }
         ]
@@ -102,11 +107,61 @@
       "runInCi": true
     }
   ],
-  "hooks": {},
+  "hooks": {
+    "beforeAll": {
+      "duration": 120000,
+      "concurrency": 5,
+      "requests": [
+        {
+          "url": "www.walla.co.il?beforeAllshared",
+          "method": "GET",
+          "headers": [],
+          "assert": [],
+          "extract": [],
+          "timeout": 60000,
+          "expectedStatus": "SUCCESS"
+        }
+      ],
+      "meta": {},
+      "parameters": [],
+      "parameterPools": [],
+      "targetedCountries": [],
+      "iterationDelay": 1000,
+      "cachePenetration": {},
+      "rampUp": 60000,
+      "useCookies": true,
+      "notifications": [],
+      "authenticationHeaders": []
+    },
+    "beforeEach": {
+      "duration": 60000,
+      "concurrency": 5,
+      "requests": [
+        {
+          "url": "wwwBE",
+          "method": "GET",
+          "headers": [],
+          "assert": [],
+          "extract": [],
+          "timeout": 60000,
+          "expectedStatus": "SUCCESS"
+        }
+      ],
+      "meta": {},
+      "parameterPools": [],
+      "targetedCountries": [],
+      "iterationDelay": 1000,
+      "cachePenetration": {},
+      "rampUp": 60000
+    }
+  },
   "dependencies": {
-    "hooks": {},
+    "hooks": {
+      "beforeAllId": "ee8d8b87-cfe8-4271-9326-2b8330a97999",
+      "beforeEachId": "29727fee-7b5d-4b35-a411-1b483e80830f"
+    },
     "login": {
-      "id": "5d313e74-53be-4c1a-8c8a-4fe98bf17589"
+      "id": "7f5189eb-7d08-4ac8-a173-0c5db549528b"
     }
   }
 }
