@@ -3,6 +3,17 @@
     "meta": {
       "description": "New Test Suite - Jun 21"
     },
+    "loginFlow": [
+      {
+        "url": "www.walla.co.il",
+        "method": "GET",
+        "headers": [],
+        "assert": [],
+        "extract": [],
+        "timeout": 60000,
+        "expectedStatus": "SUCCESS"
+      }
+    ],
     "auth": {
       "user": "22222",
       "password": "2222"
@@ -25,17 +36,6 @@
       }
     ],
     "parametersScope": "FLOW",
-    "loginFlow": [
-      {
-        "url": "www.walla.co.il",
-        "method": "GET",
-        "headers": [],
-        "assert": [],
-        "extract": [],
-        "timeout": 60000,
-        "expectedStatus": "SUCCESS"
-      }
-    ],
     "sharedLoginFlowDescription": "login2"
   },
   "flows": [
