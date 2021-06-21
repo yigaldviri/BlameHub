@@ -5,7 +5,7 @@
     },
     "loginFlow": [
       {
-        "url": "www.login1",
+        "url": "${host}.org/${st}",
         "method": "GET",
         "headers": [],
         "assert": [],
@@ -18,14 +18,25 @@
       "user": "1111",
       "password": "1111"
     },
-    "parameters": [],
+    "parameters": [
+      {
+        "host": "httpbin"
+      },
+      {
+        "st": [
+          "200",
+          "201",
+          "202"
+        ]
+      }
+    ],
     "authenticationHeaders": [
       {
-        "hlog1": "hlogval1"
+        "sharedLogHead": "shareLogVar"
       }
     ],
     "parametersScope": "FLOW",
-    "sharedLoginFlowDescription": "New Load Test - Jun 21"
+    "sharedLoginFlowDescription": "login"
   },
   "flows": [
     {
@@ -54,7 +65,18 @@
         "cachePenetration": {},
         "rampUp": 60000,
         "skipLoginFlow": false,
-        "parameters": []
+        "parameters": [
+          {
+            "host": "httpbin"
+          },
+          {
+            "st": [
+              "200",
+              "201",
+              "202"
+            ]
+          }
+        ]
       },
       "runInCi": false
     }
@@ -63,7 +85,7 @@
   "dependencies": {
     "hooks": {},
     "login": {
-      "id": "04ac17d9-4521-4fa2-80ce-520a8520798a"
+      "id": "51d04fe4-5051-4b20-bd89-0d53c8e2eda1"
     }
   }
 }
