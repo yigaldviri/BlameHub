@@ -8,7 +8,7 @@
     "parameters": [],
     "authenticationHeaders": [],
     "parametersScope": "FLOW",
-    "sharedLoginFlowDescription": "New Load Test - Jun 20"
+    "sharedLoginFlowDescription": "New Load Test - Jun 21"
   },
   "flows": [
     {
@@ -258,12 +258,24 @@
           "EnvGateWayMS": "123"
         }
       ]
+    },
+    "afterEach": {
+      "duration": 60000,
+      "concurrency": 1,
+      "requests": [],
+      "meta": {},
+      "parameterPools": [],
+      "targetedCountries": [],
+      "iterationDelay": 1000,
+      "cachePenetration": {},
+      "rampUp": 60000
     }
   },
   "dependencies": {
     "hooks": {
       "beforeAllId": "d64fd29a-a3d5-4fc9-b3c6-abb842a94dbf",
-      "beforeEachId": "060160fc-aeda-4d79-aea5-02e550889008"
+      "beforeEachId": "060160fc-aeda-4d79-aea5-02e550889008",
+      "afterEachId": "15cf193c-e7a8-4c36-8c89-cd9a5e1ea500"
     },
     "login": {
       "id": "a8409455-f190-4671-9827-8d2f550f900b"
