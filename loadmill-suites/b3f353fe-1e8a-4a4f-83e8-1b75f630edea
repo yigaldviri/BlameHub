@@ -3,10 +3,32 @@
     "meta": {
       "description": "Syncs"
     },
-    "loginFlow": [],
+    "loginFlow": [
+      {
+        "url": "www.ynet.co.il?logininline",
+        "method": "GET",
+        "headers": [],
+        "assert": [],
+        "extract": [],
+        "timeout": 60000,
+        "expectedStatus": "SUCCESS"
+      }
+    ],
     "useCookies": true,
-    "parameters": [],
-    "authenticationHeaders": [],
+    "auth": {
+      "user": "1",
+      "password": "1"
+    },
+    "parameters": [
+      {
+        "pinsiute": "val"
+      }
+    ],
+    "authenticationHeaders": [
+      {
+        "h1": "val1"
+      }
+    ],
     "parametersScope": "FLOW",
     "sharedLoginFlowDescription": "New Load Test - Jun 21"
   },
@@ -37,9 +59,47 @@
         "cachePenetration": {},
         "rampUp": 60000,
         "skipLoginFlow": false,
-        "parameters": []
+        "parameters": [
+          {
+            "pinsiute": "val"
+          }
+        ]
       },
       "runInCi": false
+    },
+    {
+      "id": "c83649f4-5a59-4553-bee8-8cec9013ff75",
+      "order": 1,
+      "conf": {
+        "duration": 60000,
+        "concurrency": 5,
+        "requests": [
+          {
+            "url": "www.walla.co.il?f1",
+            "method": "GET",
+            "headers": [],
+            "assert": [],
+            "extract": [],
+            "timeout": 60000,
+            "expectedStatus": "SUCCESS"
+          }
+        ],
+        "meta": {
+          "description": "f1 (copy)"
+        },
+        "parameterPools": [],
+        "targetedCountries": [],
+        "iterationDelay": 1000,
+        "cachePenetration": {},
+        "rampUp": 60000,
+        "skipLoginFlow": false,
+        "parameters": [
+          {
+            "pinsiute": "val"
+          }
+        ]
+      },
+      "runInCi": true
     }
   ],
   "hooks": {},
