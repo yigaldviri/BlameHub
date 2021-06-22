@@ -23,6 +23,9 @@
         "slogin2": "slogin2val"
       },
       {
+        "slogin2": "slogin2val"
+      },
+      {
         "slogin": "1"
       }
     ],
@@ -65,6 +68,9 @@
             "slogin2": "slogin2val"
           },
           {
+            "slogin2": "slogin2val"
+          },
+          {
             "slogin": "1"
           }
         ]
@@ -78,7 +84,7 @@
       "concurrency": 5,
       "requests": [
         {
-          "url": "BESHARED1",
+          "url": "besahred2",
           "method": "GET",
           "headers": [],
           "assert": [],
@@ -90,7 +96,7 @@
       "meta": {},
       "parameters": [
         {
-          "besahred": "besahred val"
+          "besahred2": "besahred2"
         }
       ],
       "parameterPools": [],
@@ -126,7 +132,7 @@
   },
   "dependencies": {
     "hooks": {
-      "beforeAllId": "7f1aaaf6-70ed-470a-8557-317a53984afc",
+      "beforeAllId": "36acaa06-f72f-4ad0-94a6-24ff4a9bc1b3",
       "beforeEachId": "9e47f78e-c6be-4705-adae-5080ac78d518"
     },
     "login": {
