@@ -5,7 +5,7 @@
     },
     "loginFlow": [
       {
-        "url": "www.customLogin",
+        "url": "www.slogin1",
         "method": "GET",
         "headers": [],
         "assert": [],
@@ -15,14 +15,14 @@
       }
     ],
     "useCookies": true,
-    "parameters": [],
-    "authenticationHeaders": [
+    "parameters": [
       {
-        "cusHead": "vusVal"
+        "slogin": "1"
       }
     ],
+    "authenticationHeaders": [],
     "parametersScope": "FLOW",
-    "sharedLoginFlowDescription": "New Load Test - Jun 22"
+    "sharedLoginFlowDescription": "login"
   },
   "flows": [
     {
@@ -51,7 +51,11 @@
         "cachePenetration": {},
         "rampUp": 60000,
         "skipLoginFlow": false,
-        "parameters": []
+        "parameters": [
+          {
+            "slogin": "1"
+          }
+        ]
       },
       "runInCi": false
     }
@@ -60,7 +64,7 @@
   "dependencies": {
     "hooks": {},
     "login": {
-      "id": "b5348d97-951d-4bbb-b604-df4c8814c798"
+      "id": "86e21139-09b1-4e62-b597-b92882453edc"
     }
   }
 }
