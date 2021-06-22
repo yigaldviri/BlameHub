@@ -5,7 +5,7 @@
     },
     "loginFlow": [
       {
-        "url": "www.slogin1",
+        "url": "www.slgin2",
         "method": "GET",
         "headers": [],
         "assert": [],
@@ -17,12 +17,15 @@
     "useCookies": true,
     "parameters": [
       {
+        "slogin2": "slogin2val"
+      },
+      {
         "slogin": "1"
       }
     ],
     "authenticationHeaders": [],
     "parametersScope": "FLOW",
-    "sharedLoginFlowDescription": "login"
+    "sharedLoginFlowDescription": "login 2"
   },
   "flows": [
     {
@@ -53,6 +56,9 @@
         "skipLoginFlow": false,
         "parameters": [
           {
+            "slogin2": "slogin2val"
+          },
+          {
             "slogin": "1"
           }
         ]
@@ -64,7 +70,7 @@
   "dependencies": {
     "hooks": {},
     "login": {
-      "id": "86e21139-09b1-4e62-b597-b92882453edc"
+      "id": "cfb1ca03-93c6-45dd-bb5a-bebc3c63a89a"
     }
   }
 }
