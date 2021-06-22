@@ -29,6 +29,9 @@
         "slogin2": "slogin2val"
       },
       {
+        "slogin2": "slogin2val"
+      },
+      {
         "slogin": "1"
       }
     ],
@@ -77,6 +80,9 @@
             "slogin2": "slogin2val"
           },
           {
+            "slogin2": "slogin2val"
+          },
+          {
             "slogin": "1"
           }
         ]
@@ -85,49 +91,10 @@
     }
   ],
   "hooks": {
-    "beforeAll": {
-      "duration": 120000,
-      "concurrency": 5,
-      "requests": [
-        {
-          "url": "besahred2",
-          "method": "GET",
-          "headers": [],
-          "assert": [],
-          "extract": [],
-          "timeout": 60000,
-          "expectedStatus": "SUCCESS"
-        }
-      ],
-      "meta": {},
-      "parameters": [
-        {
-          "besahred2": "besahred2"
-        }
-      ],
-      "parameterPools": [],
-      "targetedCountries": [],
-      "iterationDelay": 1000,
-      "cachePenetration": {},
-      "rampUp": 60000,
-      "useCookies": true,
-      "notifications": [],
-      "authenticationHeaders": []
-    },
     "beforeEach": {
       "duration": 60000,
       "concurrency": 5,
-      "requests": [
-        {
-          "url": "BEcustom1",
-          "method": "GET",
-          "headers": [],
-          "assert": [],
-          "extract": [],
-          "timeout": 60000,
-          "expectedStatus": "SUCCESS"
-        }
-      ],
+      "requests": [],
       "meta": {},
       "parameterPools": [],
       "targetedCountries": [],
@@ -136,40 +103,21 @@
       "rampUp": 60000
     },
     "afterEach": {
-      "duration": 120000,
+      "duration": 60000,
       "concurrency": 5,
-      "requests": [
-        {
-          "url": "stam",
-          "method": "GET",
-          "headers": [],
-          "assert": [],
-          "extract": [],
-          "timeout": 60000,
-          "expectedStatus": "SUCCESS"
-        }
-      ],
+      "requests": [],
       "meta": {},
-      "parameters": [],
       "parameterPools": [],
       "targetedCountries": [],
       "iterationDelay": 1000,
       "cachePenetration": {},
-      "rampUp": 60000,
-      "useCookies": true,
-      "notifications": [],
-      "authenticationHeaders": [
-        {
-          "12312312": "12312312312"
-        }
-      ]
+      "rampUp": 60000
     }
   },
   "dependencies": {
     "hooks": {
-      "beforeAllId": "36acaa06-f72f-4ad0-94a6-24ff4a9bc1b3",
       "beforeEachId": "9e47f78e-c6be-4705-adae-5080ac78d518",
-      "afterEachId": "04ad7195-b80c-4800-b451-f3b5356d7973"
+      "afterEachId": "f0b216eb-9743-4482-a359-b41a918c787a"
     },
     "login": {
       "id": "cfb1ca03-93c6-45dd-bb5a-bebc3c63a89a"
