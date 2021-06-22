@@ -48,7 +48,7 @@
       "concurrency": 1,
       "requests": [
         {
-          "url": "BA",
+          "url": "httpbin.org/status/${st}",
           "method": "GET",
           "headers": [],
           "assert": [],
@@ -58,11 +58,23 @@
         }
       ],
       "meta": {},
+      "parameters": [
+        {
+          "st": [
+            "200",
+            "200",
+            "200",
+            "403"
+          ]
+        }
+      ],
       "parameterPools": [],
       "targetedCountries": [],
       "iterationDelay": 1000,
       "cachePenetration": {},
-      "rampUp": 60000
+      "rampUp": 60000,
+      "notifications": [],
+      "authenticationHeaders": []
     },
     "beforeEach": {
       "duration": 60000,
@@ -273,7 +285,7 @@
   },
   "dependencies": {
     "hooks": {
-      "beforeAllId": "d64fd29a-a3d5-4fc9-b3c6-abb842a94dbf",
+      "beforeAllId": "5ec59899-752b-4d23-8f99-92c53fff85fd",
       "beforeEachId": "060160fc-aeda-4d79-aea5-02e550889008",
       "afterEachId": "15cf193c-e7a8-4c36-8c89-cd9a5e1ea500"
     },
