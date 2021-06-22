@@ -20,6 +20,9 @@
         "slogin2": "slogin2val"
       },
       {
+        "slogin2": "slogin2val"
+      },
+      {
         "slogin": "1"
       }
     ],
@@ -59,6 +62,9 @@
             "slogin2": "slogin2val"
           },
           {
+            "slogin2": "slogin2val"
+          },
+          {
             "slogin": "1"
           }
         ]
@@ -66,9 +72,63 @@
       "runInCi": false
     }
   ],
-  "hooks": {},
+  "hooks": {
+    "beforeAll": {
+      "duration": 120000,
+      "concurrency": 5,
+      "requests": [
+        {
+          "url": "BESHARED1",
+          "method": "GET",
+          "headers": [],
+          "assert": [],
+          "extract": [],
+          "timeout": 60000,
+          "expectedStatus": "SUCCESS"
+        }
+      ],
+      "meta": {},
+      "parameters": [
+        {
+          "besahred": "besahred val"
+        }
+      ],
+      "parameterPools": [],
+      "targetedCountries": [],
+      "iterationDelay": 1000,
+      "cachePenetration": {},
+      "rampUp": 60000,
+      "useCookies": true,
+      "notifications": [],
+      "authenticationHeaders": []
+    },
+    "beforeEach": {
+      "duration": 60000,
+      "concurrency": 5,
+      "requests": [
+        {
+          "url": "BEcustom1",
+          "method": "GET",
+          "headers": [],
+          "assert": [],
+          "extract": [],
+          "timeout": 60000,
+          "expectedStatus": "SUCCESS"
+        }
+      ],
+      "meta": {},
+      "parameterPools": [],
+      "targetedCountries": [],
+      "iterationDelay": 1000,
+      "cachePenetration": {},
+      "rampUp": 60000
+    }
+  },
   "dependencies": {
-    "hooks": {},
+    "hooks": {
+      "beforeAllId": "7f1aaaf6-70ed-470a-8557-317a53984afc",
+      "beforeEachId": "9e47f78e-c6be-4705-adae-5080ac78d518"
+    },
     "login": {
       "id": "cfb1ca03-93c6-45dd-bb5a-bebc3c63a89a"
     }
