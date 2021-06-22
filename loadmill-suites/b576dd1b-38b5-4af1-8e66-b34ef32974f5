@@ -3,11 +3,26 @@
     "meta": {
       "description": "New Test Suite - Jun 22"
     },
+    "loginFlow": [
+      {
+        "url": "www.customLogin",
+        "method": "GET",
+        "headers": [],
+        "assert": [],
+        "extract": [],
+        "timeout": 60000,
+        "expectedStatus": "SUCCESS"
+      }
+    ],
     "useCookies": true,
-    "loginFlow": [],
-    "authenticationHeaders": [],
-    "sharedLoginFlowDescription": "New Flow",
-    "parameters": []
+    "parameters": [],
+    "authenticationHeaders": [
+      {
+        "cusHead": "vusVal"
+      }
+    ],
+    "parametersScope": "FLOW",
+    "sharedLoginFlowDescription": "New Load Test - Jun 22"
   },
   "flows": [
     {
