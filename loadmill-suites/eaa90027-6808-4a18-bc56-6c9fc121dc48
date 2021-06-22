@@ -8,7 +8,7 @@
     "parameters": [],
     "authenticationHeaders": [],
     "parametersScope": "FLOW",
-    "sharedLoginFlowDescription": "New Load Test - Jun 21"
+    "sharedLoginFlowDescription": "New Load Test - Jun 22"
   },
   "flows": [
     {
@@ -79,17 +79,7 @@
     "beforeEach": {
       "duration": 60000,
       "concurrency": 1,
-      "requests": [
-        {
-          "url": "BE123",
-          "method": "GET",
-          "headers": [],
-          "assert": [],
-          "extract": [],
-          "timeout": 60000,
-          "expectedStatus": "SUCCESS"
-        }
-      ],
+      "requests": [],
       "meta": {},
       "parameterPools": [],
       "targetedCountries": [],
