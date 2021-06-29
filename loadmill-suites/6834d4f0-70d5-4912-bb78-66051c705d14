@@ -5,7 +5,7 @@
     },
     "loginFlow": [
       {
-        "url": "${host}.org/status/${st}",
+        "url": "www.walla.co.il",
         "method": "GET",
         "headers": [],
         "assert": [],
@@ -44,12 +44,8 @@
         "p2_request_body_posts_0_title": "My test post ${__random_number}"
       }
     ],
-    "authenticationHeaders": [
-      {
-        "head1": "rivi1"
-      }
-    ],
-    "sharedLoginFlowDescription": "hosted httpbin with random 403"
+    "authenticationHeaders": [],
+    "sharedLoginFlowDescription": "login2 "
   },
   "flows": [
     {
@@ -868,7 +864,7 @@
   "dependencies": {
     "hooks": {},
     "login": {
-      "id": "3ad9de47-b4fb-48f5-b6e0-6e0b204ad9ee"
+      "id": "92ecc73b-ce9a-4b2d-a765-d5b3cedadb6f"
     }
   }
 }
