@@ -5,45 +5,19 @@
     },
     "loginFlow": [
       {
-        "url": "${blog_url1}/ghost/api/v0.1/authentication/token",
-        "method": "POST",
-        "headers": [
-          {
-            "Accept": "application/json, text/javascript, */*; q=0.01"
-          },
-          {
-            "X-Requested-With": "XMLHttpRequest"
-          },
-          {
-            "Accept-Language": "en-US,en;q=0.9,he;q=0.8,pt;q=0.7"
-          }
-        ],
+        "url": "walla.co.il",
+        "method": "GET",
+        "headers": [],
         "assert": [],
-        "extract": [
-          {
-            "access_token": {
-              "jsonPath": "$[\"access_token\"]"
-            }
-          },
-          {
-            "token_type": {
-              "jsonPath": "$[\"token_type\"]"
-            }
-          }
-        ],
-        "timeout": 25000,
-        "expectedStatus": "SUCCESS",
-        "description": "🗝 Global login request - adds Authorization header to all following requests ",
-        "postData": {
-          "text": "grant_type=password&username=${username}&password=${password}&client_id=ghost-admin&client_secret=${client_secret}",
-          "mimeType": "application/x-www-form-urlencoded"
-        }
+        "extract": [],
+        "timeout": 60000,
+        "expectedStatus": "SUCCESS"
       }
     ],
     "useCookies": true,
     "parameters": [
       {
-        "blog_url1": "https://loadmill-test-blog.herokuapp.com"
+        "blog_url": "https://loadmill-test-blog.herokuapp.com"
       },
       {
         "username": "a@b.com"
@@ -58,12 +32,8 @@
         "p2_request_body_posts_0_title": "My test post ${__random_number}"
       }
     ],
-    "authenticationHeaders": [
-      {
-        "Authorization": "${token_type} ${access_token}"
-      }
-    ],
-    "sharedLoginFlowDescription": "New Load Test - Jun 29"
+    "authenticationHeaders": [],
+    "sharedLoginFlowDescription": "walla"
   },
   "flows": [
     {
@@ -74,7 +44,7 @@
         "concurrency": 1,
         "requests": [
           {
-            "url": "${blog_url1}/ghost/signin/",
+            "url": "${blog_url}/ghost/signin/",
             "method": "GET",
             "headers": [
               {
@@ -91,7 +61,7 @@
             "description": "🚪 Load login page "
           },
           {
-            "url": "${blog_url1}/ghost/api/v0.1/authentication/token",
+            "url": "${blog_url}/ghost/api/v0.1/authentication/token",
             "method": "POST",
             "headers": [
               {
@@ -126,7 +96,7 @@
             }
           },
           {
-            "url": "${blog_url1}/ghost/api/v0.1/posts/?include=tags",
+            "url": "${blog_url}/ghost/api/v0.1/posts/?include=tags",
             "method": "POST",
             "headers": [
               {
@@ -162,7 +132,7 @@
             }
           },
           {
-            "url": "${blog_url1}/ghost/api/v0.1/posts/${created_post_id}/?include=tags",
+            "url": "${blog_url}/ghost/api/v0.1/posts/${created_post_id}/?include=tags",
             "method": "PUT",
             "headers": [
               {
@@ -201,15 +171,9 @@
         "meta": {
           "description": "🔑 Login & create a blog post"
         },
-        "parameterPools": [],
-        "targetedCountries": [],
-        "iterationDelay": 1000,
-        "cachePenetration": {},
-        "rampUp": 60000,
-        "skipLoginFlow": true,
         "parameters": [
           {
-            "blog_url1": "https://loadmill-test-blog.herokuapp.com"
+            "blog_url": "https://loadmill-test-blog.herokuapp.com"
           },
           {
             "username": "a@b.com"
@@ -223,7 +187,13 @@
           {
             "p2_request_body_posts_0_title": "My test post ${__random_number}"
           }
-        ]
+        ],
+        "parameterPools": [],
+        "targetedCountries": [],
+        "iterationDelay": 1000,
+        "cachePenetration": {},
+        "rampUp": 60000,
+        "skipLoginFlow": true
       },
       "runInCi": false
     },
@@ -235,7 +205,7 @@
         "concurrency": 1,
         "requests": [
           {
-            "url": "${blog_url1}/ghost/api/v0.1/posts/?include=tags",
+            "url": "${blog_url}/ghost/api/v0.1/posts/?include=tags",
             "method": "POST",
             "headers": [
               {
@@ -268,7 +238,7 @@
             }
           },
           {
-            "url": "${blog_url1}/ghost/api/v0.1/posts/${created_post_id}/?include=tags",
+            "url": "${blog_url}/ghost/api/v0.1/posts/${created_post_id}/?include=tags",
             "method": "PUT",
             "headers": [
               {
@@ -304,15 +274,9 @@
         "meta": {
           "description": "🗝 Using global login flow"
         },
-        "parameterPools": [],
-        "targetedCountries": [],
-        "iterationDelay": 1000,
-        "cachePenetration": {},
-        "rampUp": 60000,
-        "skipLoginFlow": false,
         "parameters": [
           {
-            "blog_url1": "https://loadmill-test-blog.herokuapp.com"
+            "blog_url": "https://loadmill-test-blog.herokuapp.com"
           },
           {
             "username": "a@b.com"
@@ -326,7 +290,13 @@
           {
             "p2_request_body_posts_0_title": "My test post ${__random_number}"
           }
-        ]
+        ],
+        "parameterPools": [],
+        "targetedCountries": [],
+        "iterationDelay": 1000,
+        "cachePenetration": {},
+        "rampUp": 60000,
+        "skipLoginFlow": false
       },
       "runInCi": false
     },
@@ -338,7 +308,7 @@
         "concurrency": 1,
         "requests": [
           {
-            "url": "${blog_url1}/ghost/api/v0.1/users/me/?include=roles&status=all",
+            "url": "${blog_url}/ghost/api/v0.1/users/me/?include=roles&status=all",
             "method": "GET",
             "headers": [
               {
@@ -381,15 +351,9 @@
         "meta": {
           "description": "🔍 Extract using JSONPath"
         },
-        "parameterPools": [],
-        "targetedCountries": [],
-        "iterationDelay": 1000,
-        "cachePenetration": {},
-        "rampUp": 60000,
-        "skipLoginFlow": false,
         "parameters": [
           {
-            "blog_url1": "https://loadmill-test-blog.herokuapp.com"
+            "blog_url": "https://loadmill-test-blog.herokuapp.com"
           },
           {
             "username": "a@b.com"
@@ -403,7 +367,13 @@
           {
             "p2_request_body_posts_0_title": "My test post ${__random_number}"
           }
-        ]
+        ],
+        "parameterPools": [],
+        "targetedCountries": [],
+        "iterationDelay": 1000,
+        "cachePenetration": {},
+        "rampUp": 60000,
+        "skipLoginFlow": false
       },
       "runInCi": false
     },
@@ -415,7 +385,7 @@
         "concurrency": 1,
         "requests": [
           {
-            "url": "${blog_url1}",
+            "url": "${blog_url}",
             "method": "GET",
             "headers": [],
             "assert": [
@@ -453,15 +423,9 @@
         "meta": {
           "description": "🔎 Extract using jQuery (XPath)"
         },
-        "parameterPools": [],
-        "targetedCountries": [],
-        "iterationDelay": 1000,
-        "cachePenetration": {},
-        "rampUp": 60000,
-        "skipLoginFlow": true,
         "parameters": [
           {
-            "blog_url1": "https://loadmill-test-blog.herokuapp.com"
+            "blog_url": "https://loadmill-test-blog.herokuapp.com"
           },
           {
             "username": "a@b.com"
@@ -475,7 +439,13 @@
           {
             "p2_request_body_posts_0_title": "My test post ${__random_number}"
           }
-        ]
+        ],
+        "parameterPools": [],
+        "targetedCountries": [],
+        "iterationDelay": 1000,
+        "cachePenetration": {},
+        "rampUp": 60000,
+        "skipLoginFlow": true
       },
       "runInCi": false
     },
@@ -487,7 +457,7 @@
         "concurrency": 1,
         "requests": [
           {
-            "url": "${blog_url1}/ghost/signin/",
+            "url": "${blog_url}/ghost/signin/",
             "method": "GET",
             "headers": [],
             "assert": [
@@ -519,15 +489,9 @@
         "meta": {
           "description": "🔍 Extract using RegExp"
         },
-        "parameterPools": [],
-        "targetedCountries": [],
-        "iterationDelay": 1000,
-        "cachePenetration": {},
-        "rampUp": 60000,
-        "skipLoginFlow": true,
         "parameters": [
           {
-            "blog_url1": "https://loadmill-test-blog.herokuapp.com"
+            "blog_url": "https://loadmill-test-blog.herokuapp.com"
           },
           {
             "username": "a@b.com"
@@ -541,7 +505,13 @@
           {
             "p2_request_body_posts_0_title": "My test post ${__random_number}"
           }
-        ]
+        ],
+        "parameterPools": [],
+        "targetedCountries": [],
+        "iterationDelay": 1000,
+        "cachePenetration": {},
+        "rampUp": 60000,
+        "skipLoginFlow": true
       },
       "runInCi": false
     },
@@ -553,7 +523,7 @@
         "concurrency": 1,
         "requests": [
           {
-            "url": "${blog_url1}",
+            "url": "${blog_url}",
             "method": "GET",
             "headers": [],
             "assert": [],
@@ -566,15 +536,9 @@
         "meta": {
           "description": "🤖 Continuous integration test (CI)"
         },
-        "parameterPools": [],
-        "targetedCountries": [],
-        "iterationDelay": 1000,
-        "cachePenetration": {},
-        "rampUp": 60000,
-        "skipLoginFlow": true,
         "parameters": [
           {
-            "blog_url1": "https://loadmill-test-blog.herokuapp.com"
+            "blog_url": "https://loadmill-test-blog.herokuapp.com"
           },
           {
             "username": "a@b.com"
@@ -588,7 +552,13 @@
           {
             "p2_request_body_posts_0_title": "My test post ${__random_number}"
           }
-        ]
+        ],
+        "parameterPools": [],
+        "targetedCountries": [],
+        "iterationDelay": 1000,
+        "cachePenetration": {},
+        "rampUp": 60000,
+        "skipLoginFlow": true
       },
       "runInCi": false
     },
@@ -600,7 +570,7 @@
         "concurrency": 1,
         "requests": [
           {
-            "url": "${blog_url1}/a-non-existing-blog-post/",
+            "url": "${blog_url}/a-non-existing-blog-post/",
             "method": "GET",
             "headers": [],
             "assert": [
@@ -618,15 +588,9 @@
         "meta": {
           "description": "🚫 Negative test case (failed request)"
         },
-        "parameterPools": [],
-        "targetedCountries": [],
-        "iterationDelay": 1000,
-        "cachePenetration": {},
-        "rampUp": 60000,
-        "skipLoginFlow": true,
         "parameters": [
           {
-            "blog_url1": "https://loadmill-test-blog.herokuapp.com"
+            "blog_url": "https://loadmill-test-blog.herokuapp.com"
           },
           {
             "username": "a@b.com"
@@ -640,7 +604,13 @@
           {
             "p2_request_body_posts_0_title": "My test post ${__random_number}"
           }
-        ]
+        ],
+        "parameterPools": [],
+        "targetedCountries": [],
+        "iterationDelay": 1000,
+        "cachePenetration": {},
+        "rampUp": 60000,
+        "skipLoginFlow": true
       },
       "runInCi": false
     },
@@ -677,7 +647,7 @@
         "skipLoginFlow": true,
         "parameters": [
           {
-            "blog_url1": "https://loadmill-test-blog.herokuapp.com"
+            "blog_url": "https://loadmill-test-blog.herokuapp.com"
           },
           {
             "username": "a@b.com"
@@ -703,7 +673,7 @@
         "concurrency": 1,
         "requests": [
           {
-            "url": "${blog_url1}/ghost/api/v0.1/configuration/timezones/",
+            "url": "${blog_url}/ghost/api/v0.1/configuration/timezones/",
             "method": "GET",
             "headers": [
               {
@@ -743,15 +713,9 @@
         "meta": {
           "description": "💔 Broken test flow - Fix me!"
         },
-        "parameterPools": [],
-        "targetedCountries": [],
-        "iterationDelay": 1000,
-        "cachePenetration": {},
-        "rampUp": 60000,
-        "skipLoginFlow": true,
         "parameters": [
           {
-            "blog_url1": "https://loadmill-test-blog.herokuapp.com"
+            "blog_url": "https://loadmill-test-blog.herokuapp.com"
           },
           {
             "username": "a@b.com"
@@ -765,7 +729,13 @@
           {
             "p2_request_body_posts_0_title": "My test post ${__random_number}"
           }
-        ]
+        ],
+        "parameterPools": [],
+        "targetedCountries": [],
+        "iterationDelay": 1000,
+        "cachePenetration": {},
+        "rampUp": 60000,
+        "skipLoginFlow": true
       },
       "runInCi": false
     }
@@ -774,7 +744,7 @@
   "dependencies": {
     "hooks": {},
     "login": {
-      "id": "e82be0e4-bb8a-4371-9aa7-db496fac8d2b"
+      "id": "3965609e-659a-49ff-b4c8-fe692f10a432"
     }
   }
 }
