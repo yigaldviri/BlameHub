@@ -7,7 +7,7 @@
     "useCookies": true,
     "parameters": [
       {
-        "host": "www.walla.co.il"
+        "host1": "www.walla.co.il"
       }
     ],
     "authenticationHeaders": [],
@@ -23,7 +23,7 @@
         "concurrency": 5,
         "requests": [
           {
-            "url": "${host}",
+            "url": "${host1}",
             "method": "GET",
             "headers": [],
             "assert": [],
@@ -35,17 +35,17 @@
         "meta": {
           "description": "New Flow"
         },
+        "parameters": [
+          {
+            "host1": "www.walla.co.il"
+          }
+        ],
         "parameterPools": [],
         "targetedCountries": [],
         "iterationDelay": 1000,
         "cachePenetration": {},
         "rampUp": 60000,
-        "skipLoginFlow": false,
-        "parameters": [
-          {
-            "host": "www.walla.co.il"
-          }
-        ]
+        "skipLoginFlow": false
       },
       "runInCi": false
     }
