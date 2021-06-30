@@ -1,0 +1,337 @@
+{
+  "conf": {
+    "meta": {
+      "description": "yigal node junit"
+    },
+    "loginFlow": [],
+    "useCookies": true,
+    "parameters": [
+      {
+        "st": "${__random_number}"
+      },
+      {
+        "host": [
+          "walla",
+          "ynet"
+        ]
+      }
+    ],
+    "authenticationHeaders": [],
+    "sharedLoginFlowDescription": "New Load Test - Jun 30"
+  },
+  "flows": [
+    {
+      "id": "c45bd749-9d01-49f8-a40b-257fb36fd1e6",
+      "order": 0,
+      "conf": {
+        "duration": 60000,
+        "concurrency": 5,
+        "requests": [
+          {
+            "url": "www.${host}.co.il?rivi=${st}",
+            "method": "GET",
+            "headers": [],
+            "assert": [],
+            "extract": [],
+            "timeout": 60000,
+            "expectedStatus": "SUCCESS"
+          },
+          {
+            "url": "httpbin.org/status/200",
+            "method": "GET",
+            "headers": [
+              {
+                "cookie": "my cookie value"
+              }
+            ],
+            "assert": [],
+            "extract": [],
+            "timeout": 60000,
+            "expectedStatus": "SUCCESS"
+          }
+        ],
+        "meta": {
+          "description": "Flow 1 good"
+        },
+        "parameterPools": [],
+        "targetedCountries": [],
+        "iterationDelay": 1000,
+        "cachePenetration": {},
+        "rampUp": 60000,
+        "skipLoginFlow": false,
+        "parameters": [
+          {
+            "st": "${__random_number}"
+          },
+          {
+            "host": [
+              "walla",
+              "ynet"
+            ]
+          }
+        ]
+      },
+      "runInCi": false
+    },
+    {
+      "id": "8fd0668e-2ddb-425b-94c1-61d1f43d2c1d",
+      "order": 1,
+      "conf": {
+        "duration": 60000,
+        "concurrency": 5,
+        "requests": [
+          {
+            "url": "www.walla.co.il?rivi=${st}",
+            "method": "GET",
+            "headers": [],
+            "assert": [],
+            "extract": [],
+            "timeout": 60000,
+            "expectedStatus": "SUCCESS"
+          },
+          {
+            "url": "httpbin.org/status/401",
+            "method": "GET",
+            "headers": [],
+            "assert": [],
+            "extract": [],
+            "timeout": 60000,
+            "expectedStatus": "SUCCESS"
+          }
+        ],
+        "meta": {
+          "description": "Flow 1 bad"
+        },
+        "parameterPools": [],
+        "targetedCountries": [],
+        "iterationDelay": 1000,
+        "cachePenetration": {},
+        "rampUp": 60000,
+        "skipLoginFlow": false,
+        "parameters": [
+          {
+            "st": "${__random_number}"
+          },
+          {
+            "host": [
+              "walla",
+              "ynet"
+            ]
+          }
+        ]
+      },
+      "runInCi": false
+    },
+    {
+      "id": "01d79110-27a7-4aed-8a52-db05658e3805",
+      "order": 2,
+      "conf": {
+        "duration": 60000,
+        "concurrency": 5,
+        "requests": [
+          {
+            "url": "www.walla.co.il?rivi=${st}",
+            "method": "GET",
+            "headers": [],
+            "assert": [],
+            "extract": [],
+            "timeout": 60000,
+            "expectedStatus": "SUCCESS"
+          },
+          {
+            "url": "httpbin.org/status/200",
+            "method": "GET",
+            "headers": [],
+            "assert": [
+              {
+                "check": "__status",
+                "equals": "300"
+              },
+              {
+                "check": "__launchedBy",
+                "equals": "Rivi"
+              },
+              {
+                "check": "__status",
+                "equals": "200"
+              },
+              {
+                "check": "__status",
+                "contains": "2"
+              },
+              {
+                "check": "__status",
+                "matches": "534534"
+              },
+              {
+                "check": "__status",
+                "notContains": "200"
+              },
+              {
+                "check": "__responseEndTime",
+                "falsy": true
+              },
+              {
+                "check": "__status",
+                "lesser": "100"
+              },
+              {
+                "check": "rivi"
+              },
+              {
+                "check": "__status",
+                "greater": "300"
+              }
+            ],
+            "extract": [
+              {
+                "rivi": ""
+              }
+            ],
+            "timeout": 60000,
+            "expectedStatus": "SUCCESS",
+            "description": "Flow desc Rivi"
+          }
+        ],
+        "meta": {
+          "description": "Flow 1 good but assertions"
+        },
+        "parameterPools": [],
+        "targetedCountries": [],
+        "iterationDelay": 1000,
+        "cachePenetration": {},
+        "rampUp": 60000,
+        "skipLoginFlow": false,
+        "parameters": [
+          {
+            "st": "${__random_number}"
+          },
+          {
+            "host": [
+              "walla",
+              "ynet"
+            ]
+          }
+        ]
+      },
+      "runInCi": false
+    },
+    {
+      "id": "762f8bc6-3d21-40f0-a9a9-a1c8f31c7ae4",
+      "order": 3,
+      "conf": {
+        "duration": 60000,
+        "concurrency": 5,
+        "requests": [
+          {
+            "url": "www.walla.co.il?rivi=${st}",
+            "method": "GET",
+            "headers": [],
+            "assert": [],
+            "extract": [],
+            "timeout": 60000,
+            "expectedStatus": "SUCCESS"
+          },
+          {
+            "url": "httpbin.org/delay/5",
+            "method": "GET",
+            "headers": [],
+            "assert": [],
+            "extract": [],
+            "timeout": 2000,
+            "expectedStatus": "SUCCESS"
+          },
+          {
+            "url": "www.walla.co.il?rivi=${st}",
+            "method": "GET",
+            "headers": [],
+            "assert": [],
+            "extract": [],
+            "timeout": 60000,
+            "expectedStatus": "SUCCESS"
+          }
+        ],
+        "meta": {
+          "description": "timout"
+        },
+        "parameterPools": [],
+        "targetedCountries": [],
+        "iterationDelay": 1000,
+        "cachePenetration": {},
+        "rampUp": 60000,
+        "skipLoginFlow": false,
+        "parameters": [
+          {
+            "st": "${__random_number}"
+          },
+          {
+            "host": [
+              "walla",
+              "ynet"
+            ]
+          }
+        ]
+      },
+      "runInCi": false
+    },
+    {
+      "id": "fd6ba9a6-7fcc-4ece-8489-87a1ace27f50",
+      "order": 4,
+      "conf": {
+        "duration": 60000,
+        "concurrency": 5,
+        "requests": [
+          {
+            "url": "httpbin.org/status/200",
+            "method": "GET",
+            "headers": [],
+            "assert": [],
+            "extract": [
+              {
+                "rivi": ""
+              }
+            ],
+            "timeout": 60000,
+            "expectedStatus": "SUCCESS",
+            "description": "Flow desc Rivi",
+            "loop": {
+              "assert": {
+                "check": "__status",
+                "contains": "234234234"
+              },
+              "iterations": 2
+            }
+          }
+        ],
+        "meta": {
+          "description": "Loops"
+        },
+        "parameterPools": [],
+        "targetedCountries": [],
+        "iterationDelay": 1000,
+        "cachePenetration": {},
+        "rampUp": 60000,
+        "skipLoginFlow": false,
+        "parameters": [
+          {
+            "st": "${__random_number}"
+          },
+          {
+            "host": [
+              "walla",
+              "ynet"
+            ]
+          }
+        ]
+      },
+      "runInCi": false
+    }
+  ],
+  "hooks": {},
+  "dependencies": {
+    "hooks": {},
+    "login": {
+      "id": "18e2b65a-bf6c-4a3e-ab60-9d33d25683df"
+    }
+  }
+}
