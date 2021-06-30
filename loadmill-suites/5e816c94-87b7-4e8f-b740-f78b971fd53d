@@ -344,7 +344,7 @@
       "concurrency": 5,
       "requests": [
         {
-          "url": "${host}.org/status/${st}",
+          "url": "beall2",
           "method": "GET",
           "headers": [],
           "assert": [],
@@ -354,38 +354,47 @@
         }
       ],
       "meta": {},
-      "parameters": [
-        {
-          "st": [
-            "200",
-            "200",
-            "200",
-            "200",
-            "403"
-          ]
-        },
-        {
-          "host": "httpbin"
-        }
-      ],
+      "parameters": [],
       "parameterPools": [],
       "targetedCountries": [],
       "iterationDelay": 1000,
       "cachePenetration": {},
       "rampUp": 60000,
+      "useCookies": true,
       "notifications": [],
-      "authenticationHeaders": [
-        {
-          "head1": "rivi1"
-        }
-      ]
+      "authenticationHeaders": []
     },
     "beforeEach": {
+      "duration": 120000,
+      "concurrency": 5,
+      "requests": [
+        {
+          "url": "AfterEACH.com",
+          "method": "GET",
+          "headers": [],
+          "assert": [],
+          "extract": [],
+          "timeout": 60000,
+          "expectedStatus": "SUCCESS"
+        }
+      ],
+      "meta": {},
+      "parameters": [],
+      "parameterPools": [],
+      "targetedCountries": [],
+      "iterationDelay": 1000,
+      "cachePenetration": {},
+      "rampUp": 60000,
+      "useCookies": true,
+      "notifications": [],
+      "authenticationHeaders": []
+    },
+    "afterEach": {
       "duration": 60000,
       "concurrency": 5,
       "requests": [
         {
-          "url": "beachCust",
+          "url": "AEcusot",
           "method": "GET",
           "headers": [],
           "assert": [],
@@ -404,8 +413,9 @@
   },
   "dependencies": {
     "hooks": {
-      "beforeAllId": "033cae43-6fb8-4d29-bfb1-b7410954b3c2",
-      "beforeEachId": "22c60d63-7bcd-49ad-a624-c82a6de840c8"
+      "beforeAllId": "808aa366-15a2-4d03-8ea5-cd33a9aeb5f1",
+      "beforeEachId": "7d9b13c8-aa91-486d-8698-0217c969f229",
+      "afterEachId": "c71f5e54-8ce7-4c06-9954-bb3b13e0505f"
     },
     "login": {
       "id": "4360632c-3323-496f-9a58-42158ef45af8"
