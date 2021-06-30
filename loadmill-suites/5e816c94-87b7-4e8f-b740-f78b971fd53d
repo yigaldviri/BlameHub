@@ -5,7 +5,7 @@
     },
     "loginFlow": [
       {
-        "url": "thisisalogin",
+        "url": "login.com",
         "method": "GET",
         "headers": [],
         "assert": [],
@@ -26,13 +26,9 @@
         ]
       }
     ],
-    "authenticationHeaders": [
-      {
-        "h1": "v1"
-      }
-    ],
+    "authenticationHeaders": [],
     "parametersScope": "FLOW",
-    "sharedLoginFlowDescription": "New Load Test - Jun 30"
+    "sharedLoginFlowDescription": "login1"
   },
   "flows": [
     {
@@ -346,7 +342,7 @@
   "dependencies": {
     "hooks": {},
     "login": {
-      "id": "18e2b65a-bf6c-4a3e-ab60-9d33d25683df"
+      "id": "4360632c-3323-496f-9a58-42158ef45af8"
     }
   }
 }
