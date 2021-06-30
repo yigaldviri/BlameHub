@@ -339,62 +339,12 @@
     }
   ],
   "hooks": {
-    "beforeAll": {
-      "duration": 120000,
-      "concurrency": 5,
-      "requests": [
-        {
-          "url": "beall2",
-          "method": "GET",
-          "headers": [],
-          "assert": [],
-          "extract": [],
-          "timeout": 60000,
-          "expectedStatus": "SUCCESS"
-        }
-      ],
-      "meta": {},
-      "parameters": [],
-      "parameterPools": [],
-      "targetedCountries": [],
-      "iterationDelay": 1000,
-      "cachePenetration": {},
-      "rampUp": 60000,
-      "useCookies": true,
-      "notifications": [],
-      "authenticationHeaders": []
-    },
     "beforeEach": {
-      "duration": 120000,
-      "concurrency": 5,
-      "requests": [
-        {
-          "url": "AfterEACH.com",
-          "method": "GET",
-          "headers": [],
-          "assert": [],
-          "extract": [],
-          "timeout": 60000,
-          "expectedStatus": "SUCCESS"
-        }
-      ],
-      "meta": {},
-      "parameters": [],
-      "parameterPools": [],
-      "targetedCountries": [],
-      "iterationDelay": 1000,
-      "cachePenetration": {},
-      "rampUp": 60000,
-      "useCookies": true,
-      "notifications": [],
-      "authenticationHeaders": []
-    },
-    "afterEach": {
       "duration": 60000,
       "concurrency": 5,
       "requests": [
         {
-          "url": "AEcusot",
+          "url": "BE.acheret",
           "method": "GET",
           "headers": [],
           "assert": [],
@@ -409,12 +359,22 @@
       "iterationDelay": 1000,
       "cachePenetration": {},
       "rampUp": 60000
+    },
+    "afterEach": {
+      "duration": 60000,
+      "concurrency": 5,
+      "requests": [],
+      "meta": {},
+      "parameterPools": [],
+      "targetedCountries": [],
+      "iterationDelay": 1000,
+      "cachePenetration": {},
+      "rampUp": 60000
     }
   },
   "dependencies": {
     "hooks": {
-      "beforeAllId": "808aa366-15a2-4d03-8ea5-cd33a9aeb5f1",
-      "beforeEachId": "7d9b13c8-aa91-486d-8698-0217c969f229",
+      "beforeEachId": "22c60d63-7bcd-49ad-a624-c82a6de840c8",
       "afterEachId": "c71f5e54-8ce7-4c06-9954-bb3b13e0505f"
     },
     "login": {
