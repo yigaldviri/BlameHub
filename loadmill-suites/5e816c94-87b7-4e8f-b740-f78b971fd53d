@@ -3,6 +3,23 @@
     "meta": {
       "description": "yigal node junit"
     },
+    "useCookies": true,
+    "parameters": [
+      {
+        "st": "${__random_number}"
+      },
+      {
+        "host": [
+          "walla",
+          "ynet"
+        ]
+      },
+      {
+        "addedP": "val1"
+      }
+    ],
+    "authenticationHeaders": [],
+    "parametersScope": "FLOW",
     "loginFlow": [
       {
         "url": "login.com",
@@ -14,20 +31,6 @@
         "expectedStatus": "SUCCESS"
       }
     ],
-    "useCookies": true,
-    "parameters": [
-      {
-        "st": "${__random_number}"
-      },
-      {
-        "host": [
-          "walla",
-          "ynet"
-        ]
-      }
-    ],
-    "authenticationHeaders": [],
-    "parametersScope": "FLOW",
     "sharedLoginFlowDescription": "login1"
   },
   "flows": [
@@ -79,6 +82,9 @@
               "walla",
               "ynet"
             ]
+          },
+          {
+            "addedP": "val1"
           }
         ]
       },
@@ -128,6 +134,9 @@
               "walla",
               "ynet"
             ]
+          },
+          {
+            "addedP": "val1"
           }
         ]
       },
@@ -222,6 +231,9 @@
               "walla",
               "ynet"
             ]
+          },
+          {
+            "addedP": "val1"
           }
         ]
       },
@@ -280,6 +292,9 @@
               "walla",
               "ynet"
             ]
+          },
+          {
+            "addedP": "val1"
           }
         ]
       },
@@ -332,13 +347,16 @@
               "walla",
               "ynet"
             ]
+          },
+          {
+            "addedP": "val1"
           }
         ]
       },
       "runInCi": false
     },
     {
-      "id": "5040edfc-d393-4a85-b5e0-f71ccebc71ca",
+      "id": "b07c9c73-a214-4b98-8fd4-fb4d7638a582",
       "order": 5,
       "conf": {
         "duration": 60000,
@@ -385,6 +403,9 @@
               "walla",
               "ynet"
             ]
+          },
+          {
+            "addedP": "val1"
           }
         ]
       },
