@@ -711,71 +711,8 @@
       "runInCi": false
     },
     {
-      "id": "423fdf8b-0f8f-4843-8547-d5f244ea507b",
-      "order": 7,
-      "conf": {
-        "duration": 60000,
-        "concurrency": 1,
-        "requests": [
-          {
-            "url": "google.com?${__random_letters('4')}",
-            "method": "GET",
-            "headers": [],
-            "assert": [],
-            "extract": [
-              {
-                "the_time": "${__now_iso()}"
-              }
-            ],
-            "timeout": 25000,
-            "expectedStatus": "SUCCESS",
-            "description": "Search google for a random 4-letter word "
-          }
-        ],
-        "meta": {
-          "description": "💲 Using built-in parameters"
-        },
-        "parameterPools": [],
-        "targetedCountries": [],
-        "iterationDelay": 1000,
-        "cachePenetration": {},
-        "rampUp": 60000,
-        "skipLoginFlow": true,
-        "parameters": [
-          {
-            "st": [
-              "200",
-              "200",
-              "200",
-              "200",
-              "403"
-            ]
-          },
-          {
-            "host": "httpbin"
-          },
-          {
-            "blog_url": "https://loadmill-test-blog.herokuapp.com"
-          },
-          {
-            "username": "a@b.com"
-          },
-          {
-            "password": "Test1234"
-          },
-          {
-            "client_secret": "8c93bf1bb580"
-          },
-          {
-            "p2_request_body_posts_0_title": "My test post ${__random_number}"
-          }
-        ]
-      },
-      "runInCi": false
-    },
-    {
       "id": "67f526fd-42ed-43d0-b438-dc867beb68da",
-      "order": 8,
+      "order": 7,
       "conf": {
         "duration": 60000,
         "concurrency": 1,
@@ -827,6 +764,64 @@
         "cachePenetration": {},
         "rampUp": 60000,
         "skipLoginFlow": true,
+        "parameters": [
+          {
+            "st": [
+              "200",
+              "200",
+              "200",
+              "200",
+              "403"
+            ]
+          },
+          {
+            "host": "httpbin"
+          },
+          {
+            "blog_url": "https://loadmill-test-blog.herokuapp.com"
+          },
+          {
+            "username": "a@b.com"
+          },
+          {
+            "password": "Test1234"
+          },
+          {
+            "client_secret": "8c93bf1bb580"
+          },
+          {
+            "p2_request_body_posts_0_title": "My test post ${__random_number}"
+          }
+        ]
+      },
+      "runInCi": false
+    },
+    {
+      "id": "d9d7dd39-733c-430b-b34c-a302ea8ba8f0",
+      "order": 8,
+      "conf": {
+        "duration": 60000,
+        "concurrency": 5,
+        "requests": [
+          {
+            "url": "wwww",
+            "method": "GET",
+            "headers": [],
+            "assert": [],
+            "extract": [],
+            "timeout": 60000,
+            "expectedStatus": "SUCCESS"
+          }
+        ],
+        "meta": {
+          "description": "this flow added"
+        },
+        "parameterPools": [],
+        "targetedCountries": [],
+        "iterationDelay": 1000,
+        "cachePenetration": {},
+        "rampUp": 60000,
+        "skipLoginFlow": false,
         "parameters": [
           {
             "st": [
