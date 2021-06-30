@@ -862,11 +862,11 @@
   ],
   "hooks": {
     "beforeAll": {
-      "duration": 120000,
+      "duration": 60000,
       "concurrency": 5,
       "requests": [
         {
-          "url": "wwww.be1shared",
+          "url": "BAcustom",
           "method": "GET",
           "headers": [],
           "assert": [],
@@ -876,26 +876,18 @@
         }
       ],
       "meta": {},
-      "parameters": [
-        {
-          "st": "2220"
-        }
-      ],
       "parameterPools": [],
       "targetedCountries": [],
       "iterationDelay": 1000,
       "cachePenetration": {},
-      "rampUp": 60000,
-      "useCookies": true,
-      "notifications": [],
-      "authenticationHeaders": []
+      "rampUp": 60000
     },
     "beforeEach": {
-      "duration": 120000,
+      "duration": 60000,
       "concurrency": 5,
       "requests": [
         {
-          "url": "www.beforea1",
+          "url": "BEcustom",
           "method": "GET",
           "headers": [],
           "assert": [],
@@ -905,15 +897,11 @@
         }
       ],
       "meta": {},
-      "parameters": [],
       "parameterPools": [],
       "targetedCountries": [],
       "iterationDelay": 1000,
       "cachePenetration": {},
-      "rampUp": 60000,
-      "useCookies": true,
-      "notifications": [],
-      "authenticationHeaders": []
+      "rampUp": 60000
     },
     "afterEach": {
       "duration": 60000,
@@ -939,8 +927,8 @@
   },
   "dependencies": {
     "hooks": {
-      "beforeAllId": "49ef1e09-e133-4b05-a9e3-4c2cfe60e006",
-      "beforeEachId": "a7b4c4a5-d4b4-480d-b485-d7bcca43fce6",
+      "beforeAllId": "e91b1986-e1c5-431e-a00a-3c0c03ee0e6f",
+      "beforeEachId": "574f9e9f-16e6-401e-8b4c-053d40a6a2d4",
       "afterEachId": "f2f8e7fb-f5b0-4bd8-af47-cb506fc3f705"
     },
     "login": {
