@@ -3,7 +3,17 @@
     "meta": {
       "description": "yigal node junit"
     },
-    "loginFlow": [],
+    "loginFlow": [
+      {
+        "url": "thisisalogin",
+        "method": "GET",
+        "headers": [],
+        "assert": [],
+        "extract": [],
+        "timeout": 60000,
+        "expectedStatus": "SUCCESS"
+      }
+    ],
     "useCookies": true,
     "parameters": [
       {
@@ -16,7 +26,12 @@
         ]
       }
     ],
-    "authenticationHeaders": [],
+    "authenticationHeaders": [
+      {
+        "h1": "v1"
+      }
+    ],
+    "parametersScope": "FLOW",
     "sharedLoginFlowDescription": "New Load Test - Jun 30"
   },
   "flows": [
