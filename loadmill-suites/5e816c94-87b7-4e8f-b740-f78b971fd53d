@@ -338,9 +338,75 @@
       "runInCi": false
     }
   ],
-  "hooks": {},
+  "hooks": {
+    "beforeAll": {
+      "duration": 120000,
+      "concurrency": 5,
+      "requests": [
+        {
+          "url": "${host}.org/status/${st}",
+          "method": "GET",
+          "headers": [],
+          "assert": [],
+          "extract": [],
+          "timeout": 60000,
+          "expectedStatus": "SUCCESS"
+        }
+      ],
+      "meta": {},
+      "parameters": [
+        {
+          "st": [
+            "200",
+            "200",
+            "200",
+            "200",
+            "403"
+          ]
+        },
+        {
+          "host": "httpbin"
+        }
+      ],
+      "parameterPools": [],
+      "targetedCountries": [],
+      "iterationDelay": 1000,
+      "cachePenetration": {},
+      "rampUp": 60000,
+      "notifications": [],
+      "authenticationHeaders": [
+        {
+          "head1": "rivi1"
+        }
+      ]
+    },
+    "beforeEach": {
+      "duration": 60000,
+      "concurrency": 5,
+      "requests": [
+        {
+          "url": "beachCust",
+          "method": "GET",
+          "headers": [],
+          "assert": [],
+          "extract": [],
+          "timeout": 60000,
+          "expectedStatus": "SUCCESS"
+        }
+      ],
+      "meta": {},
+      "parameterPools": [],
+      "targetedCountries": [],
+      "iterationDelay": 1000,
+      "cachePenetration": {},
+      "rampUp": 60000
+    }
+  },
   "dependencies": {
-    "hooks": {},
+    "hooks": {
+      "beforeAllId": "033cae43-6fb8-4d29-bfb1-b7410954b3c2",
+      "beforeEachId": "22c60d63-7bcd-49ad-a624-c82a6de840c8"
+    },
     "login": {
       "id": "4360632c-3323-496f-9a58-42158ef45af8"
     }
