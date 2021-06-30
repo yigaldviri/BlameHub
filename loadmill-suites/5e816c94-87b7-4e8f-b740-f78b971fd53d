@@ -336,6 +336,59 @@
         ]
       },
       "runInCi": false
+    },
+    {
+      "id": "5040edfc-d393-4a85-b5e0-f71ccebc71ca",
+      "order": 5,
+      "conf": {
+        "duration": 60000,
+        "concurrency": 5,
+        "requests": [
+          {
+            "url": "www.${host}.co.il?rivi=${st}",
+            "method": "GET",
+            "headers": [],
+            "assert": [],
+            "extract": [],
+            "timeout": 60000,
+            "expectedStatus": "SUCCESS"
+          },
+          {
+            "url": "httpbin.org/status/200",
+            "method": "GET",
+            "headers": [
+              {
+                "cookie": "my cookie value"
+              }
+            ],
+            "assert": [],
+            "extract": [],
+            "timeout": 60000,
+            "expectedStatus": "SUCCESS"
+          }
+        ],
+        "meta": {
+          "description": "Flow 1 good (copy)"
+        },
+        "parameterPools": [],
+        "targetedCountries": [],
+        "iterationDelay": 1000,
+        "cachePenetration": {},
+        "rampUp": 60000,
+        "skipLoginFlow": false,
+        "parameters": [
+          {
+            "st": "${__random_number}"
+          },
+          {
+            "host": [
+              "walla",
+              "ynet"
+            ]
+          }
+        ]
+      },
+      "runInCi": false
     }
   ],
   "hooks": {
