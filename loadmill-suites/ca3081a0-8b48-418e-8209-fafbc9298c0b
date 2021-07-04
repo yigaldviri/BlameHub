@@ -1,0 +1,216 @@
+{
+  "conf": {
+    "meta": {
+      "description": "MA demo"
+    },
+    "loginFlow": [
+      {
+        "url": "login1.com",
+        "method": "GET",
+        "headers": [],
+        "assert": [],
+        "extract": [],
+        "timeout": 60000,
+        "expectedStatus": "SUCCESS"
+      }
+    ],
+    "useCookies": true,
+    "parameters": [
+      {
+        "param1": "val1"
+      },
+      {
+        "theId": "${__random_uuid()}"
+      },
+      {
+        "verifyURL": "www.default.com"
+      },
+      {
+        "appURL": "https://loadmill-replace-error--zpnbht.herokuapp.com:443/"
+      }
+    ],
+    "authenticationHeaders": [],
+    "parametersScope": "FLOW",
+    "sharedLoginFlowDescription": "New Load Test - Jul 04"
+  },
+  "flows": [
+    {
+      "id": "f34e961c-5c75-435d-bcee-ce68bce490b0",
+      "order": 0,
+      "conf": {
+        "duration": 60000,
+        "concurrency": 5,
+        "requests": [
+          {
+            "url": "www.test.com/${param1}",
+            "method": "GET",
+            "headers": [],
+            "assert": [],
+            "extract": [],
+            "timeout": 60000,
+            "expectedStatus": "SUCCESS"
+          }
+        ],
+        "meta": {
+          "description": "New Flow"
+        },
+        "parameters": [
+          {
+            "param1": "val1"
+          },
+          {
+            "theId": "${__random_uuid()}"
+          },
+          {
+            "verifyURL": "www.default.com"
+          },
+          {
+            "appURL": "https://loadmill-replace-error--zpnbht.herokuapp.com:443/"
+          }
+        ],
+        "parameterPools": [],
+        "targetedCountries": [],
+        "iterationDelay": 1000,
+        "cachePenetration": {},
+        "rampUp": 60000,
+        "skipLoginFlow": false
+      },
+      "runInCi": false
+    },
+    {
+      "id": "24b73a51-822b-43bb-b7a3-2e3a3461f4e5",
+      "order": 1,
+      "conf": {
+        "duration": 60000,
+        "concurrency": 5,
+        "requests": [
+          {
+            "url": "${appURL}auth/signup",
+            "method": "POST",
+            "headers": [
+              {
+                "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36"
+              },
+              {
+                "accept": "*/*"
+              },
+              {
+                "origin": "https://loadmill-mails-njfgzkdv7vrhofu.herokuapp.com"
+              },
+              {
+                "referer": "https://loadmill-mails-njfgzkdv7vrhofu.herokuapp.com/app/signup"
+              },
+              {
+                "accept-language": "en-US,en;q=0.9,he;q=0.8"
+              },
+              {
+                "cookie": "_ga=GA1.3.1245038598.1621952858; _gid=GA1.3.233702703.1621952858; _gcl_au=1.1.661578579.1621952858; intercom-id-h9zhjyou=f55bdea1-8ac8-4c2d-a098-adbc7f7784ec; intercom-session-h9zhjyou=; _gat=1; intercom-id-uqy1vrnk=980f52ea-b03b-4106-8e2f-ec480f2ced2d; intercom-session-uqy1vrnk="
+              }
+            ],
+            "assert": [],
+            "extract": [],
+            "timeout": 60000,
+            "expectedStatus": "SUCCESS",
+            "postData": {
+              "text": "{\"name\":\"Rivi\",\"email\":\"yigal+${theId}@test.loadmill.com\",\"password\":\"Nolio123\",\"captcha\":\"ShShShSsCaptchaShShShSsLoadmill\"}",
+              "mimeType": "application/json"
+            }
+          },
+          {
+            "url": "https://www.loadmill.com/open-api/emails/${theId}",
+            "method": "GET",
+            "headers": [],
+            "assert": [],
+            "extract": [
+              {
+                "verifyURL": {
+                  "jQuery": {
+                    "query": "a:contains(\"Verify Address\")",
+                    "attr": "href"
+                  }
+                }
+              }
+            ],
+            "timeout": 60000,
+            "expectedStatus": "ANY",
+            "loop": {
+              "assert": {
+                "check": "__status",
+                "notEquals": "404"
+              },
+              "iterations": 5
+            }
+          },
+          {
+            "url": "${verifyURL}",
+            "method": "GET",
+            "headers": [],
+            "assert": [],
+            "extract": [],
+            "timeout": 60000,
+            "expectedStatus": "SUCCESS"
+          }
+        ],
+        "meta": {
+          "description": "Loadmill login and verify"
+        },
+        "parameters": [
+          {
+            "param1": "val1"
+          },
+          {
+            "theId": "${__random_uuid()}"
+          },
+          {
+            "verifyURL": "www.default.com"
+          },
+          {
+            "appURL": "https://loadmill-replace-error--zpnbht.herokuapp.com:443/"
+          }
+        ],
+        "parameterPools": [],
+        "targetedCountries": [],
+        "iterationDelay": 1000,
+        "cachePenetration": {},
+        "rampUp": 60000,
+        "skipLoginFlow": true
+      },
+      "runInCi": false
+    }
+  ],
+  "hooks": {
+    "beforeAll": {
+      "duration": 120000,
+      "concurrency": 5,
+      "requests": [
+        {
+          "url": "www.walla.co.il",
+          "method": "GET",
+          "headers": [],
+          "assert": [],
+          "extract": [],
+          "timeout": 60000,
+          "expectedStatus": "SUCCESS"
+        }
+      ],
+      "meta": {},
+      "parameters": [],
+      "parameterPools": [],
+      "targetedCountries": [],
+      "iterationDelay": 1000,
+      "cachePenetration": {},
+      "rampUp": 60000,
+      "useCookies": true,
+      "notifications": [],
+      "authenticationHeaders": []
+    }
+  },
+  "dependencies": {
+    "hooks": {
+      "beforeAllId": "aca8f157-ccb8-403c-b691-ecde5fa4dcd0"
+    },
+    "login": {
+      "id": "d9725606-dc7a-49d2-887d-980a57bf9127"
+    }
+  }
+}
