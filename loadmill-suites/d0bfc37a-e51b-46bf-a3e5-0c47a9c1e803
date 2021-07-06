@@ -5,7 +5,7 @@
     },
     "loginFlow": [
       {
-        "url": "${blog_url4}/ghost/api/v0.1/authentication/token",
+        "url": "${blog_url5}/ghost/api/v0.1/authentication/token",
         "method": "POST",
         "headers": [
           {
@@ -43,7 +43,7 @@
     "useCookies": true,
     "parameters": [
       {
-        "blog_url4": "https://loadmill-test-blog.herokuapp.com"
+        "blog_url5": "https://loadmill-test-blog.herokuapp.com"
       },
       {
         "username": "a@b.com"
@@ -74,7 +74,7 @@
         "concurrency": 1,
         "requests": [
           {
-            "url": "${blog_url4}/ghost/signin/",
+            "url": "${blog_url5}/ghost/signin/",
             "method": "GET",
             "headers": [
               {
@@ -91,7 +91,7 @@
             "description": "🚪 Load login page "
           },
           {
-            "url": "${blog_url4}/ghost/api/v0.1/authentication/token",
+            "url": "${blog_url5}/ghost/api/v0.1/authentication/token",
             "method": "POST",
             "headers": [
               {
@@ -126,7 +126,7 @@
             }
           },
           {
-            "url": "${blog_url4}/ghost/api/v0.1/posts/?include=tags",
+            "url": "${blog_url5}/ghost/api/v0.1/posts/?include=tags",
             "method": "POST",
             "headers": [
               {
@@ -162,7 +162,7 @@
             }
           },
           {
-            "url": "${blog_url4}/ghost/api/v0.1/posts/${created_post_id}/?include=tags",
+            "url": "${blog_url5}/ghost/api/v0.1/posts/${created_post_id}/?include=tags",
             "method": "PUT",
             "headers": [
               {
@@ -203,7 +203,7 @@
         },
         "parameters": [
           {
-            "blog_url4": "https://loadmill-test-blog.herokuapp.com"
+            "blog_url5": "https://loadmill-test-blog.herokuapp.com"
           },
           {
             "username": "a@b.com"
@@ -235,7 +235,7 @@
         "concurrency": 1,
         "requests": [
           {
-            "url": "${blog_url4}/ghost/api/v0.1/posts/?include=tags",
+            "url": "${blog_url5}/ghost/api/v0.1/posts/?include=tags",
             "method": "POST",
             "headers": [
               {
@@ -268,7 +268,7 @@
             }
           },
           {
-            "url": "${blog_url4}/ghost/api/v0.1/posts/${created_post_id}/?include=tags",
+            "url": "${blog_url5}/ghost/api/v0.1/posts/${created_post_id}/?include=tags",
             "method": "PUT",
             "headers": [
               {
@@ -306,7 +306,7 @@
         },
         "parameters": [
           {
-            "blog_url4": "https://loadmill-test-blog.herokuapp.com"
+            "blog_url5": "https://loadmill-test-blog.herokuapp.com"
           },
           {
             "username": "a@b.com"
@@ -338,7 +338,7 @@
         "concurrency": 1,
         "requests": [
           {
-            "url": "${blog_url4}/ghost/api/v0.1/users/me/?include=roles&status=all",
+            "url": "${blog_url5}/ghost/api/v0.1/users/me/?include=roles&status=all",
             "method": "GET",
             "headers": [
               {
@@ -383,7 +383,7 @@
         },
         "parameters": [
           {
-            "blog_url4": "https://loadmill-test-blog.herokuapp.com"
+            "blog_url5": "https://loadmill-test-blog.herokuapp.com"
           },
           {
             "username": "a@b.com"
@@ -415,7 +415,7 @@
         "concurrency": 1,
         "requests": [
           {
-            "url": "${blog_url4}",
+            "url": "${blog_url5}",
             "method": "GET",
             "headers": [],
             "assert": [
@@ -455,7 +455,7 @@
         },
         "parameters": [
           {
-            "blog_url4": "https://loadmill-test-blog.herokuapp.com"
+            "blog_url5": "https://loadmill-test-blog.herokuapp.com"
           },
           {
             "username": "a@b.com"
@@ -487,7 +487,7 @@
         "concurrency": 1,
         "requests": [
           {
-            "url": "${blog_url4}/ghost/signin/",
+            "url": "${blog_url5}/ghost/signin/",
             "method": "GET",
             "headers": [],
             "assert": [
@@ -521,7 +521,7 @@
         },
         "parameters": [
           {
-            "blog_url4": "https://loadmill-test-blog.herokuapp.com"
+            "blog_url5": "https://loadmill-test-blog.herokuapp.com"
           },
           {
             "username": "a@b.com"
@@ -553,7 +553,7 @@
         "concurrency": 1,
         "requests": [
           {
-            "url": "${blog_url4}",
+            "url": "${blog_url5}",
             "method": "GET",
             "headers": [],
             "assert": [],
@@ -568,7 +568,7 @@
         },
         "parameters": [
           {
-            "blog_url4": "https://loadmill-test-blog.herokuapp.com"
+            "blog_url5": "https://loadmill-test-blog.herokuapp.com"
           },
           {
             "username": "a@b.com"
@@ -600,7 +600,7 @@
         "concurrency": 1,
         "requests": [
           {
-            "url": "${blog_url4}/a-non-existing-blog-post/",
+            "url": "${blog_url5}/a-non-existing-blog-post/",
             "method": "GET",
             "headers": [],
             "assert": [
@@ -620,7 +620,7 @@
         },
         "parameters": [
           {
-            "blog_url4": "https://loadmill-test-blog.herokuapp.com"
+            "blog_url5": "https://loadmill-test-blog.herokuapp.com"
           },
           {
             "username": "a@b.com"
@@ -677,7 +677,7 @@
         "skipLoginFlow": true,
         "parameters": [
           {
-            "blog_url4": "https://loadmill-test-blog.herokuapp.com"
+            "blog_url5": "https://loadmill-test-blog.herokuapp.com"
           },
           {
             "username": "a@b.com"
@@ -703,7 +703,7 @@
         "concurrency": 1,
         "requests": [
           {
-            "url": "${blog_url4}/ghost/api/v0.1/configuration/timezones/",
+            "url": "${blog_url5}/ghost/api/v0.1/configuration/timezones/",
             "method": "GET",
             "headers": [
               {
@@ -745,7 +745,7 @@
         },
         "parameters": [
           {
-            "blog_url4": "https://loadmill-test-blog.herokuapp.com"
+            "blog_url5": "https://loadmill-test-blog.herokuapp.com"
           },
           {
             "username": "a@b.com"
