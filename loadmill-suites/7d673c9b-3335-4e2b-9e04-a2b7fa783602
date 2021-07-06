@@ -19,7 +19,7 @@
         "concurrency": 5,
         "requests": [
           {
-            "url": "https://loadmill-test-blog.herokuapp.com/123",
+            "url": "https://loadmill-test-blog.herokuapp.com/456",
             "method": "GET",
             "headers": [],
             "assert": [],
