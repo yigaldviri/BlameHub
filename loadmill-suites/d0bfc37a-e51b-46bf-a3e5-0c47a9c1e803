@@ -201,6 +201,12 @@
         "meta": {
           "description": "🔑 Login & create a blog post"
         },
+        "parameterPools": [],
+        "targetedCountries": [],
+        "iterationDelay": 1000,
+        "cachePenetration": {},
+        "rampUp": 60000,
+        "skipLoginFlow": true,
         "parameters": [
           {
             "blog_url2": "https://loadmill-test-blog.herokuapp.com"
@@ -217,13 +223,7 @@
           {
             "p2_request_body_posts_0_title": "My test post ${__random_number}"
           }
-        ],
-        "parameterPools": [],
-        "targetedCountries": [],
-        "iterationDelay": 1000,
-        "cachePenetration": {},
-        "rampUp": 60000,
-        "skipLoginFlow": true
+        ]
       },
       "runInCi": false
     },
@@ -304,6 +304,12 @@
         "meta": {
           "description": "🗝 Using global login flow"
         },
+        "parameterPools": [],
+        "targetedCountries": [],
+        "iterationDelay": 1000,
+        "cachePenetration": {},
+        "rampUp": 60000,
+        "skipLoginFlow": false,
         "parameters": [
           {
             "blog_url2": "https://loadmill-test-blog.herokuapp.com"
@@ -320,13 +326,7 @@
           {
             "p2_request_body_posts_0_title": "My test post ${__random_number}"
           }
-        ],
-        "parameterPools": [],
-        "targetedCountries": [],
-        "iterationDelay": 1000,
-        "cachePenetration": {},
-        "rampUp": 60000,
-        "skipLoginFlow": false
+        ]
       },
       "runInCi": false
     },
@@ -381,6 +381,12 @@
         "meta": {
           "description": "🔍 Extract using JSONPath"
         },
+        "parameterPools": [],
+        "targetedCountries": [],
+        "iterationDelay": 1000,
+        "cachePenetration": {},
+        "rampUp": 60000,
+        "skipLoginFlow": false,
         "parameters": [
           {
             "blog_url2": "https://loadmill-test-blog.herokuapp.com"
@@ -397,13 +403,7 @@
           {
             "p2_request_body_posts_0_title": "My test post ${__random_number}"
           }
-        ],
-        "parameterPools": [],
-        "targetedCountries": [],
-        "iterationDelay": 1000,
-        "cachePenetration": {},
-        "rampUp": 60000,
-        "skipLoginFlow": false
+        ]
       },
       "runInCi": false
     },
@@ -453,6 +453,12 @@
         "meta": {
           "description": "🔎 Extract using jQuery (XPath)"
         },
+        "parameterPools": [],
+        "targetedCountries": [],
+        "iterationDelay": 1000,
+        "cachePenetration": {},
+        "rampUp": 60000,
+        "skipLoginFlow": true,
         "parameters": [
           {
             "blog_url2": "https://loadmill-test-blog.herokuapp.com"
@@ -469,13 +475,7 @@
           {
             "p2_request_body_posts_0_title": "My test post ${__random_number}"
           }
-        ],
-        "parameterPools": [],
-        "targetedCountries": [],
-        "iterationDelay": 1000,
-        "cachePenetration": {},
-        "rampUp": 60000,
-        "skipLoginFlow": true
+        ]
       },
       "runInCi": false
     },
@@ -519,6 +519,12 @@
         "meta": {
           "description": "🔍 Extract using RegExp"
         },
+        "parameterPools": [],
+        "targetedCountries": [],
+        "iterationDelay": 1000,
+        "cachePenetration": {},
+        "rampUp": 60000,
+        "skipLoginFlow": true,
         "parameters": [
           {
             "blog_url2": "https://loadmill-test-blog.herokuapp.com"
@@ -535,13 +541,7 @@
           {
             "p2_request_body_posts_0_title": "My test post ${__random_number}"
           }
-        ],
-        "parameterPools": [],
-        "targetedCountries": [],
-        "iterationDelay": 1000,
-        "cachePenetration": {},
-        "rampUp": 60000,
-        "skipLoginFlow": true
+        ]
       },
       "runInCi": false
     },
@@ -566,6 +566,12 @@
         "meta": {
           "description": "🤖 Continuous integration test (CI)"
         },
+        "parameterPools": [],
+        "targetedCountries": [],
+        "iterationDelay": 1000,
+        "cachePenetration": {},
+        "rampUp": 60000,
+        "skipLoginFlow": true,
         "parameters": [
           {
             "blog_url2": "https://loadmill-test-blog.herokuapp.com"
@@ -582,13 +588,7 @@
           {
             "p2_request_body_posts_0_title": "My test post ${__random_number}"
           }
-        ],
-        "parameterPools": [],
-        "targetedCountries": [],
-        "iterationDelay": 1000,
-        "cachePenetration": {},
-        "rampUp": 60000,
-        "skipLoginFlow": true
+        ]
       },
       "runInCi": true
     },
@@ -618,6 +618,12 @@
         "meta": {
           "description": "🚫 Negative test case (failed request)"
         },
+        "parameterPools": [],
+        "targetedCountries": [],
+        "iterationDelay": 1000,
+        "cachePenetration": {},
+        "rampUp": 60000,
+        "skipLoginFlow": true,
         "parameters": [
           {
             "blog_url2": "https://loadmill-test-blog.herokuapp.com"
@@ -634,13 +640,7 @@
           {
             "p2_request_body_posts_0_title": "My test post ${__random_number}"
           }
-        ],
-        "parameterPools": [],
-        "targetedCountries": [],
-        "iterationDelay": 1000,
-        "cachePenetration": {},
-        "rampUp": 60000,
-        "skipLoginFlow": true
+        ]
       },
       "runInCi": false
     },
@@ -743,6 +743,12 @@
         "meta": {
           "description": "💔 Broken test flow - Fix me!"
         },
+        "parameterPools": [],
+        "targetedCountries": [],
+        "iterationDelay": 1000,
+        "cachePenetration": {},
+        "rampUp": 60000,
+        "skipLoginFlow": true,
         "parameters": [
           {
             "blog_url2": "https://loadmill-test-blog.herokuapp.com"
@@ -759,13 +765,7 @@
           {
             "p2_request_body_posts_0_title": "My test post ${__random_number}"
           }
-        ],
-        "parameterPools": [],
-        "targetedCountries": [],
-        "iterationDelay": 1000,
-        "cachePenetration": {},
-        "rampUp": 60000,
-        "skipLoginFlow": true
+        ]
       },
       "runInCi": false
     }
