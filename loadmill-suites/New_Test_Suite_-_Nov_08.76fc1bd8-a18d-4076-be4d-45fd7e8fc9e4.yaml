@@ -3,7 +3,7 @@ conf:
     description: New Test Suite - Nov 08
   parameters:
     - host: loadmill-test-blog.herokuapp.com
-    - TheProtocol: "https:"
+    - protocol: "http:"
     - username_in_request_body_4: a@b.com
     - password_in_request_body_4: Test1234
   useCookies: true
@@ -21,15 +21,15 @@ flows:
         
         - description: GET /
           method: GET
-          url: ${TheProtocol}//${host}/
+          url: ${protocol}//${host}/
 
         - description: GET ghost
           method: GET
-          url: ${TheProtocol}//${host}/ghost
+          url: ${protocol}//${host}/ghost
 
         - description: GET ghost
           method: GET
-          url: ${TheProtocol}//${host}/ghost/
+          url: ${protocol}//${host}/ghost/
           extract:
             - meta_name_env_blogUrl_in_response_body_3:
                 jQuery:
@@ -50,7 +50,7 @@ flows:
 
         - description: POST authentication/token
           method: POST
-          url: ${TheProtocol}//${host}/ghost/api/v0.1/authentication/token
+          url: ${protocol}//${host}/ghost/api/v0.1/authentication/token
           postData:
             text: grant_type=password&username=${__encode_url(username_in_request_body_4)}&password=${__encode_url(password_in_request_body_4)}&client_id=${__encode_url(meta_name_env_clientId_in_response_body_3)}&client_secret=${__encode_url(meta_name_env_clientSecret_in_response_body_3)}
             mimeType: application/x-www-form-urlencoded
@@ -65,14 +65,14 @@ flows:
 
         - description: GET settings
           method: GET
-          url: ${TheProtocol}//${host}/ghost/api/v0.1/settings/?type=blog%2Ctheme%2Cprivate
+          url: ${protocol}//${host}/ghost/api/v0.1/settings/?type=blog%2Ctheme%2Cprivate
           headers:
             - Authorization: ${token_type_in_response_body_4}
                 ${access_token_in_response_body_4}
 
         - description: GET users/me
           method: GET
-          url: ${TheProtocol}//${host}/ghost/api/v0.1/users/me/?include=roles&status=all
+          url: ${protocol}//${host}/ghost/api/v0.1/users/me/?include=roles&status=all
           headers:
             - Authorization: ${token_type_in_response_body_4}
                 ${access_token_in_response_body_4}
@@ -84,42 +84,42 @@ flows:
 
         - description: GET posts
           method: GET
-          url: ${TheProtocol}//${host}/ghost/api/v0.1/posts/?page=1&limit=15&status=all&staticPages=all&include=tags
+          url: ${protocol}//${host}/ghost/api/v0.1/posts/?page=1&limit=15&status=all&staticPages=all&include=tags
           headers:
             - Authorization: ${token_type_in_response_body_4}
                 ${access_token_in_response_body_4}
 
         - description: GET notifications
           method: GET
-          url: ${TheProtocol}//${host}/ghost/api/v0.1/notifications/
+          url: ${protocol}//${host}/ghost/api/v0.1/notifications/
           headers:
             - Authorization: ${token_type_in_response_body_4}
                 ${access_token_in_response_body_4}
 
         - description: GET settings
           method: GET
-          url: ${TheProtocol}//${host}/ghost/api/v0.1/settings/?type=blog%2Ctheme%2Cprivate
+          url: ${protocol}//${host}/ghost/api/v0.1/settings/?type=blog%2Ctheme%2Cprivate
           headers:
             - Authorization: ${token_type_in_response_body_4}
                 ${access_token_in_response_body_4}
 
         - description: GET tags
           method: GET
-          url: ${TheProtocol}//${host}/ghost/api/v0.1/tags/?limit=all
+          url: ${protocol}//${host}/ghost/api/v0.1/tags/?limit=all
           headers:
             - Authorization: ${token_type_in_response_body_4}
                 ${access_token_in_response_body_4}
 
         - description: GET users
           method: GET
-          url: ${TheProtocol}//${host}/ghost/api/v0.1/users/?limit=all&include=roles
+          url: ${protocol}//${host}/ghost/api/v0.1/users/?limit=all&include=roles
           headers:
             - Authorization: ${token_type_in_response_body_4}
                 ${access_token_in_response_body_4}
 
         - description: GET slugs/post/test
           method: GET
-          url: ${TheProtocol}//${host}/ghost/api/v0.1/slugs/post/test/
+          url: ${protocol}//${host}/ghost/api/v0.1/slugs/post/test/
           headers:
             - Authorization: ${token_type_in_response_body_4}
                 ${access_token_in_response_body_4}
@@ -131,7 +131,7 @@ flows:
 
         - description: POST posts
           method: POST
-          url: ${TheProtocol}//${host}/ghost/api/v0.1/posts/?include=tags
+          url: ${protocol}//${host}/ghost/api/v0.1/posts/?include=tags
           postData:
             text: >-
               {
@@ -180,7 +180,7 @@ flows:
 
         - description: PUT posts/${id_of_1st_post}
           method: PUT
-          url: ${TheProtocol}//${host}/ghost/api/v0.1/posts/${__encode_url(id_of_1st_post_in_response_body_13)}/?include=tags
+          url: ${protocol}//${host}/ghost/api/v0.1/posts/${__encode_url(id_of_1st_post_in_response_body_13)}/?include=tags
           postData:
             text: >-
               {
@@ -226,7 +226,7 @@ flows:
 
         - description: PUT posts/${id_of_1st_post}
           method: PUT
-          url: ${TheProtocol}//${host}/ghost/api/v0.1/posts/${__encode_url(id_of_1st_post_in_response_body_14)}/?include=tags
+          url: ${protocol}//${host}/ghost/api/v0.1/posts/${__encode_url(id_of_1st_post_in_response_body_14)}/?include=tags
           postData:
             text: >-
               {
@@ -272,7 +272,7 @@ flows:
 
         - description: PUT posts/${id_of_1st_post}
           method: PUT
-          url: ${TheProtocol}//${host}/ghost/api/v0.1/posts/${__encode_url(id_of_1st_post_in_response_body_15)}/?include=tags
+          url: ${protocol}//${host}/ghost/api/v0.1/posts/${__encode_url(id_of_1st_post_in_response_body_15)}/?include=tags
           postData:
             text: >-
               {
@@ -307,7 +307,7 @@ flows:
 
       parameters:
         - host: loadmill-test-blog.herokuapp.com
-        - TheProtocol: "https:"
+        - protocol: "http:"
         - username_in_request_body_4: a@b.com
         - password_in_request_body_4: Test1234
     runInCi: false
