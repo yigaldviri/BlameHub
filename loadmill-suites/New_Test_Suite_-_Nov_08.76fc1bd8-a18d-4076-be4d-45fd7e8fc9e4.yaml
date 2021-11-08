@@ -1,0 +1,376 @@
+conf:
+  meta:
+    description: New Test Suite - Nov 08
+  parameters:
+    - host: loadmill-test-blog.herokuapp.com
+    - TheProtocol: "https:"
+    - username_in_request_body_4: a@b.com
+    - password_in_request_body_4: Test1234
+  useCookies: true
+  loginFlow: []
+  authenticationHeaders: []
+  sharedLoginFlowDescription: New Load Test - Nov 08
+  parametersScope: SUITE
+flows:
+  - id: 04ac86cb-9076-4682-9845-d4955151c191
+    order: 0
+    conf:
+      meta:
+        description: Recorded Flow - Nov 08 15:01
+      requests:
+        
+        - description: GET /
+          method: GET
+          url: ${TheProtocol}//${host}/
+
+        - description: GET ghost
+          method: GET
+          url: ${TheProtocol}//${host}/ghost
+
+        - description: GET ghost
+          method: GET
+          url: ${TheProtocol}//${host}/ghost/
+          extract:
+            - meta_name_env_blogUrl_in_response_body_3:
+                jQuery:
+                  query: meta[name="env-blogUrl"]
+                  attr: content
+            - meta_name_env_clientId_in_response_body_3:
+                jQuery:
+                  query: meta[name="env-clientId"]
+                  attr: content
+            - meta_name_env_clientSecret_in_response_body_3:
+                jQuery:
+                  query: meta[name="env-clientSecret"]
+                  attr: content
+          assert:
+            - check: meta_name_env_blogUrl_in_response_body_3
+            - check: meta_name_env_clientId_in_response_body_3
+            - check: meta_name_env_clientSecret_in_response_body_3
+
+        - description: POST authentication/token
+          method: POST
+          url: ${TheProtocol}//${host}/ghost/api/v0.1/authentication/token
+          postData:
+            text: grant_type=password&username=${__encode_url(username_in_request_body_4)}&password=${__encode_url(password_in_request_body_4)}&client_id=${__encode_url(meta_name_env_clientId_in_response_body_3)}&client_secret=${__encode_url(meta_name_env_clientSecret_in_response_body_3)}
+            mimeType: application/x-www-form-urlencoded
+          extract:
+            - access_token_in_response_body_4:
+                jsonPath: $["access_token"]
+            - token_type_in_response_body_4:
+                jsonPath: $["token_type"]
+          assert:
+            - check: access_token_in_response_body_4
+            - check: token_type_in_response_body_4
+
+        - description: GET settings
+          method: GET
+          url: ${TheProtocol}//${host}/ghost/api/v0.1/settings/?type=blog%2Ctheme%2Cprivate
+          headers:
+            - Authorization: ${token_type_in_response_body_4}
+                ${access_token_in_response_body_4}
+
+        - description: GET users/me
+          method: GET
+          url: ${TheProtocol}//${host}/ghost/api/v0.1/users/me/?include=roles&status=all
+          headers:
+            - Authorization: ${token_type_in_response_body_4}
+                ${access_token_in_response_body_4}
+          extract:
+            - language_of_1st_user_in_response_body_6:
+                jsonPath: $["users"][0]["language"]
+          assert:
+            - check: language_of_1st_user_in_response_body_6
+
+        - description: GET posts
+          method: GET
+          url: ${TheProtocol}//${host}/ghost/api/v0.1/posts/?page=1&limit=15&status=all&staticPages=all&include=tags
+          headers:
+            - Authorization: ${token_type_in_response_body_4}
+                ${access_token_in_response_body_4}
+
+        - description: GET notifications
+          method: GET
+          url: ${TheProtocol}//${host}/ghost/api/v0.1/notifications/
+          headers:
+            - Authorization: ${token_type_in_response_body_4}
+                ${access_token_in_response_body_4}
+
+        - description: GET settings
+          method: GET
+          url: ${TheProtocol}//${host}/ghost/api/v0.1/settings/?type=blog%2Ctheme%2Cprivate
+          headers:
+            - Authorization: ${token_type_in_response_body_4}
+                ${access_token_in_response_body_4}
+
+        - description: GET tags
+          method: GET
+          url: ${TheProtocol}//${host}/ghost/api/v0.1/tags/?limit=all
+          headers:
+            - Authorization: ${token_type_in_response_body_4}
+                ${access_token_in_response_body_4}
+
+        - description: GET users
+          method: GET
+          url: ${TheProtocol}//${host}/ghost/api/v0.1/users/?limit=all&include=roles
+          headers:
+            - Authorization: ${token_type_in_response_body_4}
+                ${access_token_in_response_body_4}
+
+        - description: GET slugs/post/test
+          method: GET
+          url: ${TheProtocol}//${host}/ghost/api/v0.1/slugs/post/test/
+          headers:
+            - Authorization: ${token_type_in_response_body_4}
+                ${access_token_in_response_body_4}
+          extract:
+            - slug_of_1st_slug_in_response_body_12:
+                jsonPath: $["slugs"][0]["slug"]
+          assert:
+            - check: slug_of_1st_slug_in_response_body_12
+
+        - description: POST posts
+          method: POST
+          url: ${TheProtocol}//${host}/ghost/api/v0.1/posts/?include=tags
+          postData:
+            text: >-
+              {
+                "posts": [
+                  {
+                    "title": "test",
+                    "slug": "${__escape_quotes(slug_of_1st_slug_in_response_body_12)}",
+                    "markdown": "",
+                    "image": null,
+                    "featured": false,
+                    "page": false,
+                    "status": "draft",
+                    "language": "${__escape_quotes(language_of_1st_user_in_response_body_6)}",
+                    "meta_title": null,
+                    "meta_description": null,
+                    "author": "1",
+                    "publishedBy": null,
+                    "tags": []
+                  }
+                ]
+              }
+            mimeType: application/json; charset=UTF-8
+          headers:
+            - Authorization: ${token_type_in_response_body_4}
+                ${access_token_in_response_body_4}
+          extract:
+            - id_of_1st_post_in_response_body_13:
+                jsonPath: $["posts"][0]["id"]
+            - updated_at_of_1st_post_in_response_body_13:
+                jsonPath: $["posts"][0]["updated_at"]
+            - author_of_1st_post_in_response_body_13:
+                jsonPath: $["posts"][0]["author"]
+            - created_at_of_1st_post_in_response_body_13:
+                jsonPath: $["posts"][0]["created_at"]
+            - created_by_of_1st_post_in_response_body_13:
+                jsonPath: $["posts"][0]["created_by"]
+            - updated_by_of_1st_post_in_response_body_13:
+                jsonPath: $["posts"][0]["updated_by"]
+          assert:
+            - check: id_of_1st_post_in_response_body_13
+            - check: updated_at_of_1st_post_in_response_body_13
+            - check: author_of_1st_post_in_response_body_13
+            - check: created_at_of_1st_post_in_response_body_13
+            - check: created_by_of_1st_post_in_response_body_13
+            - check: updated_by_of_1st_post_in_response_body_13
+
+        - description: PUT posts/${id_of_1st_post}
+          method: PUT
+          url: ${TheProtocol}//${host}/ghost/api/v0.1/posts/${__encode_url(id_of_1st_post_in_response_body_13)}/?include=tags
+          postData:
+            text: >-
+              {
+                "posts": [
+                  {
+                    "id": ${__escape_quotes(id_of_1st_post_in_response_body_13)},
+                    "title": "test",
+                    "slug": "${__escape_quotes(slug_of_1st_slug_in_response_body_12)}",
+                    "markdown": "test",
+                    "image": null,
+                    "featured": false,
+                    "page": false,
+                    "status": "draft",
+                    "language": "${__escape_quotes(language_of_1st_user_in_response_body_6)}",
+                    "meta_title": null,
+                    "meta_description": null,
+                    "updated_at": "${__escape_quotes(updated_at_of_1st_post_in_response_body_13)}",
+                    "updated_by": ${__escape_quotes(updated_by_of_1st_post_in_response_body_13)},
+                    "published_at": null,
+                    "created_at": "${__escape_quotes(created_at_of_1st_post_in_response_body_13)}",
+                    "created_by": ${__escape_quotes(created_by_of_1st_post_in_response_body_13)},
+                    "author": ${__escape_quotes(author_of_1st_post_in_response_body_13)},
+                    "publishedBy": null,
+                    "tags": []
+                  }
+                ]
+              }
+            mimeType: application/json; charset=UTF-8
+          headers:
+            - Authorization: ${token_type_in_response_body_4}
+                ${access_token_in_response_body_4}
+          extract:
+            - id_of_1st_post_in_response_body_14:
+                jsonPath: $["posts"][0]["id"]
+            - updated_at_of_1st_post_in_response_body_14:
+                jsonPath: $["posts"][0]["updated_at"]
+            - author_of_1st_post_in_response_body_14:
+                jsonPath: $["posts"][0]["author"]
+          assert:
+            - check: id_of_1st_post_in_response_body_14
+            - check: updated_at_of_1st_post_in_response_body_14
+            - check: author_of_1st_post_in_response_body_14
+
+        - description: PUT posts/${id_of_1st_post}
+          method: PUT
+          url: ${TheProtocol}//${host}/ghost/api/v0.1/posts/${__encode_url(id_of_1st_post_in_response_body_14)}/?include=tags
+          postData:
+            text: >-
+              {
+                "posts": [
+                  {
+                    "id": ${__escape_quotes(id_of_1st_post_in_response_body_14)},
+                    "title": "test",
+                    "slug": "${__escape_quotes(slug_of_1st_slug_in_response_body_12)}",
+                    "markdown": "test123",
+                    "image": null,
+                    "featured": false,
+                    "page": false,
+                    "status": "draft",
+                    "language": "${__escape_quotes(language_of_1st_user_in_response_body_6)}",
+                    "meta_title": null,
+                    "meta_description": null,
+                    "updated_at": "${__escape_quotes(updated_at_of_1st_post_in_response_body_14)}",
+                    "updated_by": ${__escape_quotes(updated_by_of_1st_post_in_response_body_13)},
+                    "published_at": null,
+                    "created_at": "${__escape_quotes(created_at_of_1st_post_in_response_body_13)}",
+                    "created_by": ${__escape_quotes(created_by_of_1st_post_in_response_body_13)},
+                    "author": ${__escape_quotes(author_of_1st_post_in_response_body_14)},
+                    "publishedBy": null,
+                    "tags": []
+                  }
+                ]
+              }
+            mimeType: application/json; charset=UTF-8
+          headers:
+            - Authorization: ${token_type_in_response_body_4}
+                ${access_token_in_response_body_4}
+          extract:
+            - id_of_1st_post_in_response_body_15:
+                jsonPath: $["posts"][0]["id"]
+            - updated_at_of_1st_post_in_response_body_15:
+                jsonPath: $["posts"][0]["updated_at"]
+            - author_of_1st_post_in_response_body_15:
+                jsonPath: $["posts"][0]["author"]
+          assert:
+            - check: id_of_1st_post_in_response_body_15
+            - check: updated_at_of_1st_post_in_response_body_15
+            - check: author_of_1st_post_in_response_body_15
+
+        - description: PUT posts/${id_of_1st_post}
+          method: PUT
+          url: ${TheProtocol}//${host}/ghost/api/v0.1/posts/${__encode_url(id_of_1st_post_in_response_body_15)}/?include=tags
+          postData:
+            text: >-
+              {
+                "posts": [
+                  {
+                    "id": ${__escape_quotes(id_of_1st_post_in_response_body_15)},
+                    "title": "test123",
+                    "slug": "${__escape_quotes(slug_of_1st_slug_in_response_body_12)}",
+                    "markdown": "test123",
+                    "image": null,
+                    "featured": false,
+                    "page": false,
+                    "status": "published",
+                    "language": "${__escape_quotes(language_of_1st_user_in_response_body_6)}",
+                    "meta_title": null,
+                    "meta_description": null,
+                    "updated_at": "${__escape_quotes(updated_at_of_1st_post_in_response_body_15)}",
+                    "updated_by": ${__escape_quotes(updated_by_of_1st_post_in_response_body_13)},
+                    "published_at": null,
+                    "created_at": "${__escape_quotes(created_at_of_1st_post_in_response_body_13)}",
+                    "created_by": ${__escape_quotes(created_by_of_1st_post_in_response_body_13)},
+                    "author": ${__escape_quotes(author_of_1st_post_in_response_body_15)},
+                    "publishedBy": null,
+                    "tags": []
+                  }
+                ]
+              }
+            mimeType: application/json; charset=UTF-8
+          headers:
+            - Authorization: ${token_type_in_response_body_4}
+                ${access_token_in_response_body_4}
+
+      parameters:
+        - host: loadmill-test-blog.herokuapp.com
+        - TheProtocol: "https:"
+        - username_in_request_body_4: a@b.com
+        - password_in_request_body_4: Test1234
+    runInCi: false
+hooks:
+  beforeAll:
+    meta: {}
+    requests:
+      
+      - method: GET
+        url: www.ynet.co.il?p=BA
+  beforeEach:
+
+    meta: {}
+    requests:
+      
+      - method: GET
+        url: www.ynet.co.il?p=BE
+  afterEach:
+
+    meta: {}
+    requests:
+      
+      - method: GET
+        url: www.ynet.co.il?p=AE
+  afterAll:
+
+    meta: {}
+    requests:
+      
+      - method: GET
+        url: ${host}.org/status/${st}
+        headers: []
+        expectedStatus: SUCCESS
+        timeout: 60000
+        extract: []
+        postScript: ""
+        assert: []
+
+    parameters:
+      - st:
+          - "201"
+          - "200"
+          - "200"
+          - "200"
+          - "200"
+          - "403"
+      - host: httpbin
+      - rivi: ${__random_number()}
+    authenticationHeaders:
+      - head1: rivi1
+      - head2: ${rivi}
+      - shimi: "123"
+    concurrency: 5
+    duration: 120000
+    rampUp: 60000
+    iterationDelay: 1000
+    cachePenetration: {}
+    targetedCountries: []
+dependencies:
+  hooks:
+    beforeAllId: a3ca4388-01cf-4a8e-831f-1590d0e599e3
+    beforeEachId: 7c4b1aac-c4c2-4a8a-a224-f065b136cd4e
+    afterEachId: 539c5246-654f-4014-a7c7-6cf6df0ba72e
+    afterAllId: 38d171e7-f014-4e7a-b373-d2c15f588b52
+  login:
+    id: e0c317e7-4a98-476f-a179-0222468f5605
